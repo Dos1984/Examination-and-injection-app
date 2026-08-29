@@ -95,6 +95,18 @@
       toggle.className = 'hand-inj-sub-toggle';
       toggle.setAttribute('aria-expanded', 'false');
 
+      const label = document.createElement('span');
+      label.className = 'hand-inj-sub-title';
+      label.textContent = title;
+
+      const hint = document.createElement('span');
+      hint.className = 'hand-inj-sub-hint';
+      hint.textContent = 'Tap to view landmarks, approach & safety';
+
+      const text = document.createElement('span');
+      text.className = 'hand-inj-sub-text';
+      text.append(label, hint);
+
       const thumb = document.createElement('span');
       thumb.className = 'hand-inj-thumb';
       if (firstImg?.src) {
@@ -108,24 +120,13 @@
         thumb.setAttribute('aria-hidden', 'true');
       }
 
-      const label = document.createElement('span');
-      label.className = 'hand-inj-sub-title';
-      label.textContent = title;
-
-      const hint = document.createElement('span');
-      hint.className = 'hand-inj-sub-hint';
-      hint.textContent = 'Tap to view landmarks, approach & safety';
-
-      const text = document.createElement('span');
-      text.className = 'hand-inj-sub-text';
-      text.append(label, hint);
-
       const chev = document.createElement('span');
       chev.className = 'hand-inj-sub-chevron';
       chev.setAttribute('aria-hidden', 'true');
       chev.textContent = '⌄';
 
-      toggle.append(thumb, text, chev);
+      /* Natural reading order: text first, then image, then expand control. */
+      toggle.append(text, thumb, chev);
       card.append(toggle, subBody);
       h.replaceWith(card);
 
