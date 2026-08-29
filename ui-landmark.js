@@ -3,6 +3,14 @@
   const isInjectionTab = () => location.hash.split('/')[2] === 'injection';
   const isHandInjection = () => location.hash.split('/')[1] === 'hand' && isInjectionTab();
 
+  function reorderBodyDiagramChoices() {
+    const choice = document.querySelector('.figchoice');
+    const illustration = choice?.querySelector('[data-figure="illustration"]');
+    const silhouette = choice?.querySelector('[data-figure="silhouette"]');
+    if (!choice || !illustration || !silhouette) return;
+    if (choice.firstElementChild !== illustration) choice.insertBefore(illustration, silhouette);
+  }
+
   function stripUltrasoundContent() {
     if (!isInjectionTab()) return;
     document.querySelectorAll('#view .section').forEach(section => {
@@ -138,6 +146,7 @@
   }
 
   function enhance() {
+    reorderBodyDiagramChoices();
     if (!isInjectionTab()) return;
     stripUltrasoundContent();
     makeCollapsible();
