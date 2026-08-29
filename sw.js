@@ -1,11 +1,13 @@
 /* MSK Examination & Injection Guide — offline service worker
    The app shell (index.html) carries every photograph and diagram inline, so
-   caching it makes the whole reference available offline. Videos are large, so
-   they are cached only after they have been watched once. */
+   caching it makes the whole reference available offline.
 
-const VERSION = 'msk-v1';
+   Videos are deliberately NOT intercepted by this service worker. Browsers
+   use HTTP Range requests for MP4 playback/seeking, and allowing the browser
+   to talk directly to GitHub Pages is the most reliable behaviour. */
+
+const VERSION = 'msk-v2';
 const SHELL = `${VERSION}-shell`;
-const MEDIA = `${VERSION}-media`;
 
 const SHELL_FILES = [
   '.', 'index.html', 'manifest.webmanifest',
@@ -35,24 +37,13 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
+
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;
 
-  // Videos: network first, then cache what has been watched. Range requests
-  // (seeking) are passed straight through — the Cache API cannot serve them.
-  if (url.pathname.endsWith('.mp4')) {
-    if (req.headers.has('range')) return;
-    e.respondWith(
-      caches.match(req).then(hit => hit || fetch(req).then(res => {
-        if (res.ok) {
-          const copy = res.clone();
-          caches.open(MEDIA).then(c => c.put(req, copy));
-        }
-        return res;
-      }).catch(() => caches.match(req)))
-    );
-    return;
-  }
+  // Let the browser fetch MP4 files directly. This preserves GitHub Pages'
+  // native byte-range handling and avoids stale/corrupt media cache entries.
+  if (url.pathname.toLowerCase().endsWith('.mp4')) return;
 
   // App shell: cache first, refresh in the background.
   e.respondWith(
