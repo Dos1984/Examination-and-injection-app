@@ -1,0 +1,10 @@
+/* Collapsible injection sections: reduce information overload */
+.inj-collapse{border:1px solid var(--line);border-radius:14px;margin:0 0 14px;overflow:hidden;background:var(--paper,#fff)}
+.inj-collapse-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;border:0;background:transparent;color:inherit;text-align:left;padding:18px 20px;cursor:pointer;font:inherit}
+.inj-collapse-toggle>span:first-child{font-size:1.25rem;font-weight:750;line-height:1.25}
+.inj-chevron{font-size:1.35rem;line-height:1;transition:transform .18s ease;color:var(--accent)}
+.inj-collapse.collapsed .inj-chevron{transform:rotate(-90deg)}
+.inj-collapse-body{padding:0 20px 20px}
+.inj-collapse.collapsed .inj-collapse-body{display:none}
+.inj-collapse .sec-rule{margin-top:0}
+@media(max-width:700px){.inj-collapse-toggle{padding:15px 16px}.inj-collapse-body{padding:0 16px 16px}.inj-collapse-toggle>span:first-child{font-size:1.08rem}}
