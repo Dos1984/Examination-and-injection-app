@@ -1,5 +1,5 @@
 /* MSK Examination & Injection Guide — offline service worker */
-const VERSION = 'msk-v8';
+const VERSION = 'msk-v9';
 const SHELL = `${VERSION}-shell`;
 const SHELL_FILES = ['manifest.webmanifest','ui-landmark.css','ui-landmark.js','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png','icons/apple-touch-icon.png'];
 
@@ -16,6 +16,17 @@ function enhanceHtml(html) {
     "const DEFAULTS = { bg: '#EAEFEF', figure: 'silhouette' };",
     "const DEFAULTS = { bg: '#EAEFEF', figure: 'illustration' };"
   );
+
+  /* Replace only the right-hand image in the Olecranon bursa section. */
+  html = html.replace(
+    'const IMG = {',
+    'const IMG = {"Olecranon_Bursa_Replacement":"images/olecranon-bursa-aspiration-injection.png.png",'
+  );
+  html = html.replace(
+    '"src": "Comprehensive_Elbow_Examination_and_Injection_Guide__image22", "caption": "Aspiration/injection illustration from the supplied material."',
+    '"src": "Olecranon_Bursa_Replacement", "caption": "Olecranon bursa aspiration/injection approach."'
+  );
+
   if (!html.includes('ui-landmark.css')) html = html.replace('</head>', '<link rel="stylesheet" href="ui-landmark.css"></head>');
   if (!html.includes('ui-landmark.js')) html = html.replace('</body>', '<script src="ui-landmark.js"></script></body>');
   return html;
