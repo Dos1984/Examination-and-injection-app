@@ -1,5 +1,5 @@
 /* MSK Examination & Injection Guide — offline service worker */
-const VERSION = 'msk-v9';
+const VERSION = 'msk-v10';
 const SHELL = `${VERSION}-shell`;
 const SHELL_FILES = ['manifest.webmanifest','ui-landmark.css','ui-landmark.js','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png','icons/apple-touch-icon.png'];
 
@@ -11,7 +11,7 @@ self.addEventListener('activate', e => e.waitUntil(
 ));
 
 function enhanceHtml(html) {
-  /* Illustration is the application default. A user's saved preference still wins. */
+  /* Illustration is the application default. */
   html = html.replace(
     "const DEFAULTS = { bg: '#EAEFEF', figure: 'silhouette' };",
     "const DEFAULTS = { bg: '#EAEFEF', figure: 'illustration' };"
@@ -37,12 +37,8 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;
-
-  // Leave video delivery entirely to GitHub Pages/browser byte-range handling.
   if (url.pathname.toLowerCase().endsWith('.mp4')) return;
 
-  // Inject lightweight UI enhancements into the large single-file app at
-  // delivery time, avoiding a risky 4 MB index rewrite.
   if (req.mode === 'navigate' || url.pathname.endsWith('/index.html') || url.pathname.endsWith('/Examination-and-injection-app/')) {
     e.respondWith(fetch(req).then(async res => {
       if (!res.ok) return res;
