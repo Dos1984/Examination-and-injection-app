@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" role="img" aria-labelledby="title desc">
+<title id="title">Direct A1 pulley approach for trigger finger injection</title>
+<desc id="desc">Palm-up schematic showing a midline needle placed directly over the A1 pulley and flexor tendon sheath, with safety labels for tendon excursion and digital neurovascular bundles.</desc>
+<rect width="1000" height="650" rx="28" fill="#fbfdfd"/>
+<rect x="18" y="18" width="964" height="614" rx="24" fill="none" stroke="#d5e0e2" stroke-width="3"/>
+<text x="50" y="70" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#11262a">Direct A1 pulley approach</text>
+<text x="50" y="106" font-family="Arial, sans-serif" font-size="21" fill="#526a70">Volar midline / short-axis landmark technique</text>
+
+<!-- stylised palm -->
+<path d="M300 525 C245 500 210 454 211 398 C212 350 238 319 270 295 L270 170 C270 143 288 124 311 124 C335 124 351 143 351 170 L351 290 L373 290 L373 126 C373 96 392 76 418 76 C444 76 463 97 463 126 L463 287 L485 287 L485 145 C485 117 504 98 529 98 C555 98 573 119 573 146 L573 300 L595 305 L595 190 C595 163 613 145 637 145 C661 145 679 165 679 190 L679 347 C707 372 726 405 726 445 C726 505 677 552 612 557 L384 557 C353 557 324 544 300 525 Z" fill="#f2c4a5" stroke="#bc846b" stroke-width="5"/>
+
+<!-- flexor tendon central -->
+<path d="M421 510 C426 425 429 344 430 245 C430 201 430 157 430 119" fill="none" stroke="#6f94b5" stroke-width="30" stroke-linecap="round" opacity="0.72"/>
+<path d="M421 510 C426 425 429 344 430 245 C430 201 430 157 430 119" fill="none" stroke="#365f7d" stroke-width="8" stroke-linecap="round"/>
+
+<!-- A1 pulley -->
+<rect x="388" y="315" width="86" height="58" rx="25" fill="#f1d27a" fill-opacity="0.72" stroke="#a87824" stroke-width="5"/>
+<text x="487" y="344" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#7b5117">A1 pulley</text>
+<line x1="478" y1="347" x2="465" y2="347" stroke="#7b5117" stroke-width="3"/>
+
+<!-- neurovascular bundles -->
+<path d="M365 488 C370 421 371 376 373 323" fill="none" stroke="#b84b53" stroke-width="10" stroke-linecap="round"/>
+<path d="M493 487 C491 421 490 377 489 324" fill="none" stroke="#b84b53" stroke-width="10" stroke-linecap="round"/>
+<text x="70" y="470" font-family="Arial, sans-serif" font-size="21" fill="#8a3940">Digital neurovascular bundles</text>
+<text x="70" y="499" font-family="Arial, sans-serif" font-size="19" fill="#526a70">lie to either side — stay midline</text>
+<line x1="288" y1="475" x2="363" y2="427" stroke="#8a3940" stroke-width="3"/>
+
+<!-- syringe and needle -->
+<rect x="397" y="126" width="67" height="130" rx="12" fill="#dfe8ec" stroke="#5f7179" stroke-width="4"/>
+<rect x="408" y="141" width="45" height="77" rx="7" fill="#ffffff" stroke="#87979d" stroke-width="2"/>
+<line x1="430" y1="108" x2="430" y2="126" stroke="#5f7179" stroke-width="9"/>
+<line x1="430" y1="256" x2="430" y2="329" stroke="#626e73" stroke-width="7"/>
+<circle cx="430" cy="329" r="9" fill="#a87824"/>
+
+<!-- 90 degree marker -->
+<path d="M446 288 L476 288 L476 318" fill="none" stroke="#9a521d" stroke-width="4"/>
+<text x="482" y="303" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#9a521d">~90°</text>
+
+<!-- labels -->
+<text x="705" y="184" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#11262a">1. Palpate the A1 pulley</text>
+<text x="705" y="215" font-family="Arial, sans-serif" font-size="19" fill="#526a70">at the volar MCP crease /</text>
+<text x="705" y="242" font-family="Arial, sans-serif" font-size="19" fill="#526a70">point of maximal tenderness.</text>
+<line x1="695" y1="235" x2="478" y2="337" stroke="#526a70" stroke-width="3"/>
+
+<text x="705" y="315" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#11262a">2. Insert in the midline</text>
+<text x="705" y="346" font-family="Arial, sans-serif" font-size="19" fill="#526a70">directly over the flexor tendon,</text>
+<text x="705" y="373" font-family="Arial, sans-serif" font-size="19" fill="#526a70">perpendicular or slightly distal.</text>
+
+<text x="705" y="445" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#11262a">3. Withdraw slightly</text>
+<text x="705" y="476" font-family="Arial, sans-serif" font-size="19" fill="#526a70">before injection. If the needle</text>
+<text x="705" y="503" font-family="Arial, sans-serif" font-size="19" fill="#526a70">moves with tendon excursion,</text>
+<text x="705" y="530" font-family="Arial, sans-serif" font-size="19" fill="#526a70">withdraw and reassess.</text>
+
+<rect x="48" y="565" width="904" height="46" rx="12" fill="#eef7f3" stroke="#bad6c9" stroke-width="2"/>
+<text x="70" y="595" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#28644c">Target:</text>
+<text x="142" y="595" font-family="Arial, sans-serif" font-size="20" fill="#355c50">deposit around the A1 pulley / flexor sheath — not within the tendon.</text>
+</svg>
