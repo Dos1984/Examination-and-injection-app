@@ -1,7 +1,7 @@
 /* MSK Examination & Injection Guide — offline service worker */
-const VERSION = 'msk-v12';
+const VERSION = 'msk-v13';
 const SHELL = `${VERSION}-shell`;
-const SHELL_FILES = ['manifest.webmanifest','ui-landmark.css','ui-landmark.js','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png','icons/apple-touch-icon.png','images/trigger-finger-direct-a1-approach.svg'];
+const SHELL_FILES = ['manifest.webmanifest','ui-landmark.css','ui-landmark.js','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png','icons/apple-touch-icon.png','images/direct-a1-pulley-schematic.webp','images/direct-a1-pulley-photo.webp'];
 
 self.addEventListener('install', e => e.waitUntil(
   caches.open(SHELL).then(c => c.addAll(SHELL_FILES)).then(() => self.skipWaiting()).catch(() => self.skipWaiting())
@@ -20,7 +20,7 @@ function enhanceHtml(html) {
   /* Add external replacement/teaching illustrations to the image registry. */
   html = html.replace(
     'const IMG = {',
-    'const IMG = {"Olecranon_Bursa_Replacement":"images/olecranon-bursa-aspiration-injection.png.png","Trigger_Finger_Direct_A1":"images/trigger-finger-direct-a1-approach.svg",'
+    'const IMG = {"Olecranon_Bursa_Replacement":"images/olecranon-bursa-aspiration-injection.png.png","Trigger_Finger_Direct_A1_Schematic":"images/direct-a1-pulley-schematic.webp","Trigger_Finger_Direct_A1_Photo":"images/direct-a1-pulley-photo.webp",'
   );
 
   /* Replace only the right-hand image in the Olecranon bursa section. */
@@ -29,10 +29,10 @@ function enhanceHtml(html) {
     '"src": "Olecranon_Bursa_Replacement", "caption": "Olecranon bursa aspiration/injection approach."'
   );
 
-  /* Trigger finger: retain the two existing images and add a direct A1 schematic. */
+  /* Trigger finger: retain the two existing figures and add the two supplied direct-approach images. */
   html = html.replace(
     '{"src": "Comprehensive_Hand_Wrist_Examination_and_Injection_Guide__image19", "caption": "A1 pulley / trigger finger anatomy"}, {"src": "Comprehensive_Hand_Wrist_Examination_and_Injection_Guide__image20", "caption": "Trigger finger injection trajectory"}',
-    '{"src": "Comprehensive_Hand_Wrist_Examination_and_Injection_Guide__image19", "caption": "A1 pulley / trigger finger anatomy"}, {"src": "Comprehensive_Hand_Wrist_Examination_and_Injection_Guide__image20", "caption": "Trigger finger injection trajectory (proximal-to-distal approach)"}, {"src": "Trigger_Finger_Direct_A1", "caption": "Alternative direct A1 pulley approach (schematic)"}'
+    '{"src": "Comprehensive_Hand_Wrist_Examination_and_Injection_Guide__image19", "caption": "A1 pulley / trigger finger anatomy"}, {"src": "Comprehensive_Hand_Wrist_Examination_and_Injection_Guide__image20", "caption": "Trigger finger injection trajectory (proximal-to-distal approach)"}, {"src": "Trigger_Finger_Direct_A1_Schematic", "caption": "Needle path and target (direct A1 pulley approach)"}, {"src": "Trigger_Finger_Direct_A1_Photo", "caption": "Needle entry directly over A1 pulley (short-axis approach)"}'
   );
 
   /* Replace the source-manual referral with practical landmark guidance. */
