@@ -1,7 +1,7 @@
 /* MSK Examination & Injection Guide — offline service worker */
-const VERSION = 'msk-v13';
+const VERSION = 'msk-v14';
 const SHELL = `${VERSION}-shell`;
-const SHELL_FILES = ['manifest.webmanifest','ui-landmark.css','ui-landmark.js','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png','icons/apple-touch-icon.png','images/direct-a1-pulley-schematic.webp','images/direct-a1-pulley-photo.webp'];
+const SHELL_FILES = ['manifest.webmanifest','ui-landmark.css','ui-landmark.js','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png','icons/apple-touch-icon.png'];
 
 self.addEventListener('install', e => e.waitUntil(
   caches.open(SHELL).then(c => c.addAll(SHELL_FILES)).then(() => self.skipWaiting()).catch(() => self.skipWaiting())
@@ -17,10 +17,11 @@ function enhanceHtml(html) {
     "const DEFAULTS = { bg: '#EAEFEF', figure: 'illustration' };"
   );
 
-  /* Add external replacement/teaching illustrations to the image registry. */
+  /* Add external replacement/teaching illustrations to the image registry.
+     Trigger-finger figures use raw GitHub URLs to bypass stale/blank Pages cache entries. */
   html = html.replace(
     'const IMG = {',
-    'const IMG = {"Olecranon_Bursa_Replacement":"images/olecranon-bursa-aspiration-injection.png.png","Trigger_Finger_Direct_A1_Schematic":"images/direct-a1-pulley-schematic.webp","Trigger_Finger_Direct_A1_Photo":"images/direct-a1-pulley-photo.webp",'
+    'const IMG = {"Olecranon_Bursa_Replacement":"images/olecranon-bursa-aspiration-injection.png.png","Trigger_Finger_Direct_A1_Schematic":"https://raw.githubusercontent.com/Dos1984/Examination-and-injection-app/main/images/direct-a1-pulley-schematic.webp?v=2","Trigger_Finger_Direct_A1_Photo":"https://raw.githubusercontent.com/Dos1984/Examination-and-injection-app/main/images/direct-a1-pulley-photo.webp?v=2",'
   );
 
   /* Replace only the right-hand image in the Olecranon bursa section. */
