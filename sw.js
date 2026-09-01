@@ -1,7 +1,7 @@
 /* MSK Examination & Injection Guide — offline service worker */
-const VERSION = 'msk-v11';
+const VERSION = 'msk-v12';
 const SHELL = `${VERSION}-shell`;
-const SHELL_FILES = ['manifest.webmanifest','ui-landmark.css','ui-landmark.js','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png','icons/apple-touch-icon.png'];
+const SHELL_FILES = ['manifest.webmanifest','ui-landmark.css','ui-landmark.js','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png','icons/apple-touch-icon.png','images/trigger-finger-direct-a1-approach.svg'];
 
 self.addEventListener('install', e => e.waitUntil(
   caches.open(SHELL).then(c => c.addAll(SHELL_FILES)).then(() => self.skipWaiting()).catch(() => self.skipWaiting())
@@ -17,20 +17,28 @@ function enhanceHtml(html) {
     "const DEFAULTS = { bg: '#EAEFEF', figure: 'illustration' };"
   );
 
-  /* Replace only the right-hand image in the Olecranon bursa section. */
+  /* Add external replacement/teaching illustrations to the image registry. */
   html = html.replace(
     'const IMG = {',
-    'const IMG = {"Olecranon_Bursa_Replacement":"images/olecranon-bursa-aspiration-injection.png.png",'
+    'const IMG = {"Olecranon_Bursa_Replacement":"images/olecranon-bursa-aspiration-injection.png.png","Trigger_Finger_Direct_A1":"images/trigger-finger-direct-a1-approach.svg",'
   );
+
+  /* Replace only the right-hand image in the Olecranon bursa section. */
   html = html.replace(
     '"src": "Comprehensive_Elbow_Examination_and_Injection_Guide__image22", "caption": "Aspiration/injection illustration from the supplied material."',
     '"src": "Olecranon_Bursa_Replacement", "caption": "Olecranon bursa aspiration/injection approach."'
   );
 
-  /* Expand the trigger-finger alternative direct technique and add a compact schematic. */
+  /* Trigger finger: retain the two existing images and add a direct A1 schematic. */
   html = html.replace(
-    'Alternative direct techniques are described in the source manuals.',
-    'Alternative direct A1 pulley approach: palpate the A1 pulley at the MCP crease/maximal tenderness and insert the needle directly over the flexor tendon, approximately perpendicular to the skin or with only a slight distal angle. Advance carefully until firm pulley/tendon resistance is encountered, then withdraw the tip slightly before injecting so the needle is not intratendinous. If the syringe/needle moves with active finger flexion-extension, withdraw slightly and re-check before injection. The aim is to deposit corticosteroid around the A1 pulley/flexor sheath rather than within the tendon.<div style="margin:16px 0 4px;padding:14px;border:1px solid #d7e0e2;border-radius:12px;background:#fbfcfc;max-width:760px"><div style="font-weight:700;margin-bottom:8px;color:#8f4a19">Direct A1 pulley approach — schematic</div><svg viewBox="0 0 760 250" role="img" aria-label="Schematic showing a direct volar needle approach to the A1 pulley" style="width:100%;height:auto;display:block"><rect x="0" y="0" width="760" height="250" rx="10" fill="#ffffff"/><path d="M90 185 C150 170 205 162 270 158 C350 153 435 150 520 148 C575 147 625 150 675 158" fill="none" stroke="#e5b08f" stroke-width="54" stroke-linecap="round"/><path d="M118 178 C205 167 303 160 401 156 C495 152 581 151 656 157" fill="none" stroke="#f4cdb4" stroke-width="40" stroke-linecap="round"/><path d="M245 164 C320 158 395 155 475 154" fill="none" stroke="#d8c08f" stroke-width="8" stroke-linecap="round"/><rect x="315" y="132" width="66" height="48" rx="20" fill="none" stroke="#9b5b37" stroke-width="7"/><text x="348" y="116" text-anchor="middle" font-size="19" font-family="Arial, sans-serif" fill="#6a3b22">A1 pulley</text><line x1="348" y1="22" x2="348" y2="126" stroke="#5d6870" stroke-width="8" stroke-linecap="round"/><polygon points="348,136 337,116 359,116" fill="#5d6870"/><rect x="332" y="6" width="32" height="70" rx="5" fill="#d8e1e5" stroke="#5d6870" stroke-width="3"/><line x1="348" y1="76" x2="348" y2="126" stroke="#b9c3c8" stroke-width="4"/><text x="382" y="55" font-size="18" font-family="Arial, sans-serif" fill="#33444b">direct volar needle</text><text x="382" y="80" font-size="17" font-family="Arial, sans-serif" fill="#53666e">withdraw slightly before injection</text><text x="348" y="216" text-anchor="middle" font-size="17" font-family="Arial, sans-serif" fill="#53666e">Flexor tendon / sheath</text></svg><div style="font-size:.88rem;color:#5a6a70;margin-top:7px">Schematic only: keep the needle tip out of the flexor tendon; reposition if the needle moves with tendon excursion.</div></div>'
+    '{"src": "Comprehensive_Hand_Wrist_Examination_and_Injection_Guide__image19", "caption": "A1 pulley / trigger finger anatomy"}, {"src": "Comprehensive_Hand_Wrist_Examination_and_Injection_Guide__image20", "caption": "Trigger finger injection trajectory"}',
+    '{"src": "Comprehensive_Hand_Wrist_Examination_and_Injection_Guide__image19", "caption": "A1 pulley / trigger finger anatomy"}, {"src": "Comprehensive_Hand_Wrist_Examination_and_Injection_Guide__image20", "caption": "Trigger finger injection trajectory (proximal-to-distal approach)"}, {"src": "Trigger_Finger_Direct_A1", "caption": "Alternative direct A1 pulley approach (schematic)"}'
+  );
+
+  /* Replace the source-manual referral with practical landmark guidance. */
+  html = html.replace(
+    '"sub": ["Alternative direct techniques are described in the source manuals."]',
+    '"sub": ["Alternative direct A1 pulley approach: palpate the A1 pulley at the volar MCP crease, usually at the point of maximal tenderness or palpable nodule.", "Insert the needle in the midline directly over the flexor tendon, approximately perpendicular to the skin (or with only a slight distal angle). Advance cautiously until resistance from the pulley/tendon is felt, then withdraw the needle slightly before injecting to avoid intratendinous placement.", "Ask the patient to gently flex and extend the finger before injection. If the needle or syringe moves with the tendon, withdraw slightly and reassess.", "Aim to deposit injectate around the A1 pulley/flexor sheath rather than within the tendon. The digital neurovascular bundles lie to either side, so keep the approach strictly midline."]'
   );
 
   if (!html.includes('ui-landmark.css')) html = html.replace('</head>', '<link rel="stylesheet" href="ui-landmark.css"></head>');
