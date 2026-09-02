@@ -1,5 +1,5 @@
 /* MSK Examination & Injection Guide — offline service worker */
-const VERSION = 'msk-v16';
+const VERSION = 'msk-v17';
 const SHELL = `${VERSION}-shell`;
 const SHELL_FILES = [
   'manifest.webmanifest',
@@ -23,7 +23,7 @@ self.addEventListener('activate', e => e.waitUntil(
 ));
 
 function enhanceHtml(html) {
-  /* Illustration is the application default. */
+  /* Illustration is the application default; Silhouette remains selectable. */
   html = html.replace(
     "const DEFAULTS = { bg: '#EAEFEF', figure: 'silhouette' };",
     "const DEFAULTS = { bg: '#EAEFEF', figure: 'illustration' };"
