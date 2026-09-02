@@ -66,8 +66,8 @@
 
     const directCaption = 'Needle path and target (direct A1 pulley approach)';
     const photoCaption = 'Needle entry directly over A1 pulley (short-axis approach)';
-    const schematicSrc = 'images/direct-a1-pulley-schematic-final.png?v=19';
-    const photoSrc = 'images/direct-a1-pulley-photo.webp?v=19';
+    const schematicSrc = 'images/direct-a1-pulley-schematic-final.png?v=20';
+    const photoSrc = 'direct-a1-pulley-clinical-photo-final.jpg?v=20';
 
     let directFig = [...figs.querySelectorAll('figure')].find(f => (f.querySelector('figcaption')?.textContent || '').includes('Needle path and target'));
     if (directFig) {
@@ -92,7 +92,7 @@
     /* Two original figures plus the two direct-approach figures = four. */
     figs.classList.remove('n1','n2','n3','nmany');
     figs.classList.add('n4');
-    body.dataset.trigger54Fixed = '19';
+    body.dataset.trigger54Fixed = '20';
   }
 
   let queued = false;
