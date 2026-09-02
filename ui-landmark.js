@@ -2,33 +2,29 @@
 (() => {
   const isInjectionTab = () => location.hash.split('/')[2] === 'injection';
   const isHandInjection = () => location.hash.split('/')[1] === 'hand' && isInjectionTab();
+  const DEFAULT_MIGRATION_KEY = 'msk.illustration-default-v17';
+  let settingsDraft = null;
 
   function enforceIllustrationDefault() {
-    /* Illustration is the application-wide default, including devices that
-       previously saved Silhouette in localStorage. Keep the selector available
-       so Silhouette can still be chosen manually during the current session. */
+    /* Migrate the old Silhouette default once. After this one-time migration,
+       an explicitly applied Silhouette preference is respected. */
     try {
-      for (let i = localStorage.length - 1; i >= 0; i--) {
-        const key = localStorage.key(i);
-        if (!key) continue;
-        const value = localStorage.getItem(key);
-        if (value === 'silhouette') localStorage.setItem(key, 'illustration');
-        else if (value && /"figure"\s*:\s*"silhouette"/.test(value)) {
-          localStorage.setItem(key, value.replace(/"figure"\s*:\s*"silhouette"/g, '"figure":"illustration"'));
+      if (!localStorage.getItem(DEFAULT_MIGRATION_KEY)) {
+        const saved = JSON.parse(localStorage.getItem('msk.settings') || 'null');
+        if (saved && typeof saved === 'object' && saved.figure === 'silhouette') {
+          saved.figure = 'illustration';
+          localStorage.setItem('msk.settings', JSON.stringify(saved));
+          if (typeof CFG !== 'undefined') CFG.figure = 'illustration';
         }
+        localStorage.setItem(DEFAULT_MIGRATION_KEY, '1');
       }
     } catch (_) {}
 
-    const illustration = document.querySelector('.figchoice [data-figure="illustration"]');
-    const silhouette = document.querySelector('.figchoice [data-figure="silhouette"]');
-    if (illustration && silhouette && illustration.parentElement?.firstElementChild !== illustration) {
-      illustration.parentElement.insertBefore(illustration, silhouette);
-    }
-
-    if (document.documentElement.dataset.illustrationDefaultApplied !== '1' && illustration) {
-      document.documentElement.dataset.illustrationDefaultApplied = '1';
-      const selected = document.querySelector('.figchoice [aria-pressed="true"], .figchoice .active, .figchoice .selected');
-      if (!selected || selected.dataset.figure === 'silhouette') illustration.click();
+    const choice = document.querySelector('.figchoice');
+    const illustration = choice?.querySelector('[data-figure="illustration"]');
+    const silhouette = choice?.querySelector('[data-figure="silhouette"]');
+    if (choice && illustration && silhouette && choice.firstElementChild !== illustration) {
+      choice.insertBefore(illustration, silhouette);
     }
   }
 
@@ -38,6 +34,51 @@
     const silhouette = choice?.querySelector('[data-figure="silhouette"]');
     if (!choice || !illustration || !silhouette) return;
     if (choice.firstElementChild !== illustration) choice.insertBefore(illustration, silhouette);
+  }
+
+  function paintDraftSelection(body) {
+    if (!body || !settingsDraft) return;
+    body.querySelectorAll('[data-figure]').forEach(btn => {
+      const on = btn.dataset.figure === settingsDraft.figure;
+      btn.classList.toggle('on', on);
+      btn.setAttribute('aria-pressed', String(on));
+    });
+    body.querySelectorAll('[data-bg]').forEach(btn => {
+      btn.classList.toggle('on', (btn.dataset.bg || '').toLowerCase() === settingsDraft.bg.toLowerCase());
+    });
+    const custom = body.querySelector('#bgCustom');
+    if (custom) custom.value = settingsDraft.bg;
+    const code = body.querySelector('.custom code');
+    if (code) code.textContent = settingsDraft.bg.toUpperCase();
+  }
+
+  function enhanceSettings() {
+    const body = document.querySelector('#setBody');
+    if (!body || body.dataset.confirmSettings === '1') return;
+
+    enforceIllustrationDefault();
+    reorderBodyDiagramChoices();
+
+    try {
+      settingsDraft = {
+        figure: (typeof CFG !== 'undefined' && CFG.figure) ? CFG.figure : 'illustration',
+        bg: (typeof CFG !== 'undefined' && CFG.bg) ? CFG.bg : '#EAEFEF'
+      };
+    } catch (_) {
+      settingsDraft = { figure: 'illustration', bg: '#EAEFEF' };
+    }
+
+    body.dataset.confirmSettings = '1';
+    const group = document.createElement('div');
+    group.className = 'setgroup settings-apply-group';
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.id = 'applyNewSettings';
+    btn.className = 'apply-settings-btn';
+    btn.textContent = 'Apply New Settings';
+    group.appendChild(btn);
+    body.appendChild(group);
+    paintDraftSelection(body);
   }
 
   function stripUltrasoundContent() {
@@ -107,11 +148,54 @@
   function enhance() {
     enforceIllustrationDefault();
     reorderBodyDiagramChoices();
+    enhanceSettings();
     if (!isInjectionTab()) return;
     stripUltrasoundContent(); makeCollapsible(); makeHandSubsectionsCollapsible();
   }
 
+  /* Settings are edited as a draft. Capture these events before the app's
+     original immediate-apply handlers, then commit them only on Apply. */
   document.addEventListener('click', e => {
+    const body = e.target.closest?.('#setBody');
+    if (body && settingsDraft) {
+      const figure = e.target.closest?.('[data-figure]');
+      const swatch = e.target.closest?.('[data-bg]');
+      const reset = e.target.closest?.('#resetCfg');
+      const apply = e.target.closest?.('#applyNewSettings');
+
+      if (figure) {
+        e.preventDefault(); e.stopImmediatePropagation();
+        settingsDraft.figure = figure.dataset.figure;
+        paintDraftSelection(body);
+        return;
+      }
+      if (swatch) {
+        e.preventDefault(); e.stopImmediatePropagation();
+        settingsDraft.bg = swatch.dataset.bg;
+        paintDraftSelection(body);
+        return;
+      }
+      if (reset) {
+        e.preventDefault(); e.stopImmediatePropagation();
+        settingsDraft = { figure: 'illustration', bg: '#EAEFEF' };
+        paintDraftSelection(body);
+        return;
+      }
+      if (apply) {
+        e.preventDefault(); e.stopImmediatePropagation();
+        try {
+          CFG.figure = settingsDraft.figure;
+          CFG.bg = settingsDraft.bg;
+          applyCfg();
+          refreshHome();
+          localStorage.setItem(DEFAULT_MIGRATION_KEY, '1');
+        } catch (_) {}
+        settingsDraft = null;
+        try { closeSettings(); } catch (_) {}
+        return;
+      }
+    }
+
     if (!isHandInjection()) return;
     const link = e.target.closest?.('.sidenav a[href^="#p-"]'); if (!link) return;
     const card = document.querySelector(link.getAttribute('href')); if (!card?.classList.contains('hand-inj-sub')) return;
@@ -119,6 +203,20 @@
     if (outer?.classList.contains('collapsed')) { outer.classList.remove('collapsed'); outer.querySelector(':scope > .inj-collapse-toggle')?.setAttribute('aria-expanded', 'true'); }
     if (card.classList.contains('collapsed')) { card.classList.remove('collapsed'); card.querySelector(':scope > .hand-inj-sub-toggle')?.setAttribute('aria-expanded', 'true'); }
   }, true);
+
+  document.addEventListener('input', e => {
+    if (e.target?.id !== 'bgCustom' || !settingsDraft) return;
+    const body = e.target.closest('#setBody');
+    if (!body) return;
+    e.stopImmediatePropagation();
+    settingsDraft.bg = e.target.value;
+    paintDraftSelection(body);
+  }, true);
+
+  /* Closing settings without Apply discards the draft. */
+  document.addEventListener('click', e => {
+    if (e.target.closest?.('#setClose')) settingsDraft = null;
+  }, false);
 
   const observer = new MutationObserver(() => requestAnimationFrame(enhance));
   observer.observe(document.documentElement, { childList: true, subtree: true });
