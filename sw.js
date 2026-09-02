@@ -1,11 +1,13 @@
 /* MSK Examination & Injection Guide — offline service worker */
-const VERSION = 'msk-v18';
+const VERSION = 'msk-v19';
 const SHELL = `${VERSION}-shell`;
 const SHELL_FILES = [
   'manifest.webmanifest',
   'ui-landmark.css',
   'ui-landmark.js',
   'trigger-fix-v16.js',
+  'images/direct-a1-pulley-schematic-final.png',
+  'images/direct-a1-pulley-photo.webp',
   'icons/icon-192.png',
   'icons/icon-512.png',
   'icons/icon-maskable-512.png',
