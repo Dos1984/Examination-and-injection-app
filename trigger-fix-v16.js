@@ -1,6 +1,20 @@
 /* Trigger finger section 5.4: direct A1 pulley approach teaching content */
 (() => {
   const isHandInjection = () => location.hash.split('/')[1] === 'hand' && location.hash.split('/')[2] === 'injection';
+  const asset = name => new URL(name, document.baseURI).href;
+
+  function prepareImage(img, src, caption) {
+    if (!img) return;
+    /* iOS Safari can leave dynamically inserted lazy images blank when their
+       parent starts display:none. These two teaching figures must load eagerly. */
+    img.removeAttribute('loading');
+    img.loading = 'eager';
+    img.decoding = 'async';
+    try { img.fetchPriority = 'high'; } catch (_) {}
+    img.alt = caption;
+    const resolved = asset(src);
+    if (img.src !== resolved) img.src = resolved;
+  }
 
   function makeFigure(src, caption) {
     const fig = document.createElement('figure');
@@ -8,9 +22,7 @@
     frame.className = 'figbtn';
     frame.setAttribute('aria-label', caption);
     const img = document.createElement('img');
-    img.src = src;
-    img.alt = caption;
-    img.loading = 'lazy';
+    prepareImage(img, src, caption);
     frame.appendChild(img);
     const cap = document.createElement('figcaption');
     cap.textContent = caption;
@@ -54,39 +66,33 @@
 
     const directCaption = 'Needle path and target (direct A1 pulley approach)';
     const photoCaption = 'Needle entry directly over A1 pulley (short-axis approach)';
+    const schematicSrc = 'images/direct-a1-pulley-schematic-final.png?v=19';
+    const photoSrc = 'images/direct-a1-pulley-photo.webp?v=19';
 
     let directFig = [...figs.querySelectorAll('figure')].find(f => (f.querySelector('figcaption')?.textContent || '').includes('Needle path and target'));
     if (directFig) {
-      const img = directFig.querySelector('img');
-      if (img) {
-        img.src = 'images/direct-a1-pulley-schematic-final.png?v=17';
-        img.alt = directCaption;
-      }
+      prepareImage(directFig.querySelector('img'), schematicSrc, directCaption);
       const cap = directFig.querySelector('figcaption');
       if (cap) cap.textContent = directCaption;
     } else {
-      directFig = makeFigure('images/direct-a1-pulley-schematic-final.png?v=17', directCaption);
+      directFig = makeFigure(schematicSrc, directCaption);
       figs.appendChild(directFig);
     }
 
     let photoFig = [...figs.querySelectorAll('figure')].find(f => (f.querySelector('figcaption')?.textContent || '').includes('Needle entry directly over A1 pulley'));
     if (photoFig) {
-      const img = photoFig.querySelector('img');
-      if (img && (!img.src || /Trigger_Finger_Direct|raw\.githubusercontent|direct-a1/i.test(img.src))) {
-        img.src = 'images/direct-a1-pulley-photo-fixed.svg?v=17';
-        img.alt = photoCaption;
-      }
+      prepareImage(photoFig.querySelector('img'), photoSrc, photoCaption);
       const cap = photoFig.querySelector('figcaption');
       if (cap) cap.textContent = photoCaption;
     } else {
-      photoFig = makeFigure('images/direct-a1-pulley-photo-fixed.svg?v=17', photoCaption);
+      photoFig = makeFigure(photoSrc, photoCaption);
       figs.appendChild(photoFig);
     }
 
     /* Two original figures plus the two direct-approach figures = four. */
     figs.classList.remove('n1','n2','n3','nmany');
     figs.classList.add('n4');
-    body.dataset.trigger54Fixed = '17';
+    body.dataset.trigger54Fixed = '19';
   }
 
   let queued = false;
