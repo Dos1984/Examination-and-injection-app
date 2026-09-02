@@ -8,6 +8,7 @@
   function enforceIllustrationDefault() {
     /* Migrate the old Silhouette default once. After this one-time migration,
        an explicitly applied Silhouette preference is respected. */
+    let migrated = false;
     try {
       if (!localStorage.getItem(DEFAULT_MIGRATION_KEY)) {
         const saved = JSON.parse(localStorage.getItem('msk.settings') || 'null');
@@ -15,10 +16,15 @@
           saved.figure = 'illustration';
           localStorage.setItem('msk.settings', JSON.stringify(saved));
           if (typeof CFG !== 'undefined') CFG.figure = 'illustration';
+          migrated = true;
         }
         localStorage.setItem(DEFAULT_MIGRATION_KEY, '1');
       }
     } catch (_) {}
+
+    if (migrated) {
+      try { applyCfg(); refreshHome(); } catch (_) {}
+    }
 
     const choice = document.querySelector('.figchoice');
     const illustration = choice?.querySelector('[data-figure="illustration"]');
@@ -54,7 +60,8 @@
 
   function enhanceSettings() {
     const body = document.querySelector('#setBody');
-    if (!body || body.dataset.confirmSettings === '1') return;
+    if (!body) return;
+    if (body.dataset.confirmSettings === '1' && body.querySelector('#applyNewSettings')) return;
 
     enforceIllustrationDefault();
     reorderBodyDiagramChoices();
@@ -68,6 +75,7 @@
       settingsDraft = { figure: 'illustration', bg: '#EAEFEF' };
     }
 
+    body.querySelector('.settings-apply-group')?.remove();
     body.dataset.confirmSettings = '1';
     const group = document.createElement('div');
     group.className = 'setgroup settings-apply-group';
