@@ -49,7 +49,7 @@
       }
     });
 
-    let figs = body.querySelector('.figs');
+    const figs = body.querySelector('.figs');
     if (!figs) return;
 
     const directCaption = 'Needle path and target (direct A1 pulley approach)';
@@ -59,13 +59,13 @@
     if (directFig) {
       const img = directFig.querySelector('img');
       if (img) {
-        img.src = 'images/direct-a1-pulley-schematic-final.png?v=16';
+        img.src = 'images/direct-a1-pulley-schematic-final.png?v=17';
         img.alt = directCaption;
       }
       const cap = directFig.querySelector('figcaption');
       if (cap) cap.textContent = directCaption;
     } else {
-      directFig = makeFigure('images/direct-a1-pulley-schematic-final.png?v=16', directCaption);
+      directFig = makeFigure('images/direct-a1-pulley-schematic-final.png?v=17', directCaption);
       figs.appendChild(directFig);
     }
 
@@ -73,19 +73,20 @@
     if (photoFig) {
       const img = photoFig.querySelector('img');
       if (img && (!img.src || /Trigger_Finger_Direct|raw\.githubusercontent|direct-a1/i.test(img.src))) {
-        img.src = 'images/direct-a1-pulley-photo-fixed.svg?v=16';
+        img.src = 'images/direct-a1-pulley-photo-fixed.svg?v=17';
         img.alt = photoCaption;
       }
       const cap = photoFig.querySelector('figcaption');
       if (cap) cap.textContent = photoCaption;
     } else {
-      photoFig = makeFigure('images/direct-a1-pulley-photo-fixed.svg?v=16', photoCaption);
+      photoFig = makeFigure('images/direct-a1-pulley-photo-fixed.svg?v=17', photoCaption);
       figs.appendChild(photoFig);
     }
 
+    /* Two original figures plus the two direct-approach figures = four. */
     figs.classList.remove('n1','n2','n3','nmany');
     figs.classList.add('n4');
-    body.dataset.trigger54Fixed = '16';
+    body.dataset.trigger54Fixed = '17';
   }
 
   let queued = false;
