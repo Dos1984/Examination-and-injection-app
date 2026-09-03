@@ -1,5 +1,5 @@
 /* MSK Examination & Injection Guide — offline service worker */
-const VERSION = 'msk-v22';
+const VERSION = 'msk-v23';
 const SHELL = `${VERSION}-shell`;
 const SHELL_FILES = [
   'manifest.webmanifest',
@@ -7,6 +7,7 @@ const SHELL_FILES = [
   'ui-landmark.js',
   'trigger-fix-v16.js',
   'guide-update-v22.js',
+  'guide-images-v23.js',
   'images/direct-a1-pulley-schematic-final.png',
   'direct-a1-pulley-clinical-photo-final.jpg',
   'icons/icon-192.png',
@@ -42,18 +43,11 @@ function enhanceHtml(html) {
     '"src": "Olecranon_Bursa_Replacement", "caption": "Olecranon bursa aspiration/injection approach."'
   );
 
-  if (!html.includes('ui-landmark.css')) {
-    html = html.replace('</head>', '<link rel="stylesheet" href="ui-landmark.css"></head>');
-  }
-  if (!html.includes('ui-landmark.js')) {
-    html = html.replace('</body>', '<script src="ui-landmark.js"></script></body>');
-  }
-  if (!html.includes('trigger-fix-v16.js')) {
-    html = html.replace('</body>', '<script src="trigger-fix-v16.js"></script></body>');
-  }
-  if (!html.includes('guide-update-v22.js')) {
-    html = html.replace('</body>', '<script src="guide-update-v22.js"></script></body>');
-  }
+  if (!html.includes('ui-landmark.css')) html = html.replace('</head>', '<link rel="stylesheet" href="ui-landmark.css"></head>');
+  if (!html.includes('ui-landmark.js')) html = html.replace('</body>', '<script src="ui-landmark.js"></script></body>');
+  if (!html.includes('trigger-fix-v16.js')) html = html.replace('</body>', '<script src="trigger-fix-v16.js"></script></body>');
+  if (!html.includes('guide-update-v22.js')) html = html.replace('</body>', '<script src="guide-update-v22.js"></script></body>');
+  if (!html.includes('guide-images-v23.js')) html = html.replace('</body>', '<script src="guide-images-v23.js"></script></body>');
   return html;
 }
 
@@ -62,19 +56,13 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;
-
-  /* Leave video byte-range delivery to GitHub Pages/browser. */
   if (url.pathname.toLowerCase().endsWith('.mp4')) return;
 
   if (req.mode === 'navigate' || url.pathname.endsWith('/index.html') || url.pathname.endsWith('/Examination-and-injection-app/')) {
     e.respondWith(fetch(req).then(async res => {
       if (!res.ok) return res;
       const html = enhanceHtml(await res.text());
-      return new Response(html, {
-        status: res.status,
-        statusText: res.statusText,
-        headers: {'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-cache'}
-      });
+      return new Response(html, {status:res.status,statusText:res.statusText,headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-cache'}});
     }).catch(() => fetch(req)));
     return;
   }
