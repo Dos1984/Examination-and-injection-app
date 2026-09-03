@@ -1,11 +1,12 @@
 /* MSK Examination & Injection Guide — offline service worker */
-const VERSION = 'msk-v21';
+const VERSION = 'msk-v22';
 const SHELL = `${VERSION}-shell`;
 const SHELL_FILES = [
   'manifest.webmanifest',
   'ui-landmark.css',
   'ui-landmark.js',
   'trigger-fix-v16.js',
+  'guide-update-v22.js',
   'images/direct-a1-pulley-schematic-final.png',
   'direct-a1-pulley-clinical-photo-final.jpg',
   'icons/icon-192.png',
@@ -49,6 +50,9 @@ function enhanceHtml(html) {
   }
   if (!html.includes('trigger-fix-v16.js')) {
     html = html.replace('</body>', '<script src="trigger-fix-v16.js"></script></body>');
+  }
+  if (!html.includes('guide-update-v22.js')) {
+    html = html.replace('</body>', '<script src="guide-update-v22.js"></script></body>');
   }
   return html;
 }
