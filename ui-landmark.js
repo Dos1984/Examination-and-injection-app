@@ -2,50 +2,40 @@
 (() => {
   const isInjectionTab = () => location.hash.split('/')[2] === 'injection';
   const isHandInjection = () => location.hash.split('/')[1] === 'hand' && isInjectionTab();
-  const DEFAULT_MIGRATION_KEY = 'msk.illustration-default-v17';
   let settingsDraft = null;
 
-  function enforceIllustrationDefault() {
-    /* Migrate the old Silhouette default once. After this one-time migration,
-       an explicitly applied Silhouette preference is respected. */
-    let migrated = false;
+  function forceIllustrationOnly() {
+    let changed = false;
     try {
-      if (!localStorage.getItem(DEFAULT_MIGRATION_KEY)) {
-        const saved = JSON.parse(localStorage.getItem('msk.settings') || 'null');
-        if (saved && typeof saved === 'object' && saved.figure === 'silhouette') {
-          saved.figure = 'illustration';
-          localStorage.setItem('msk.settings', JSON.stringify(saved));
-          if (typeof CFG !== 'undefined') CFG.figure = 'illustration';
-          migrated = true;
-        }
-        localStorage.setItem(DEFAULT_MIGRATION_KEY, '1');
+      const saved = JSON.parse(localStorage.getItem('msk.settings') || 'null');
+      if (saved && typeof saved === 'object' && saved.figure !== 'illustration') {
+        saved.figure = 'illustration';
+        localStorage.setItem('msk.settings', JSON.stringify(saved));
+        changed = true;
+      }
+      if (typeof CFG !== 'undefined' && CFG.figure !== 'illustration') {
+        CFG.figure = 'illustration';
+        changed = true;
       }
     } catch (_) {}
 
-    if (migrated) {
+    document.querySelectorAll('[data-figure="silhouette"]').forEach(el => el.remove());
+    const illustration = document.querySelector('.figchoice [data-figure="illustration"]');
+    if (illustration) {
+      illustration.classList.add('on');
+      illustration.setAttribute('aria-pressed', 'true');
+    }
+
+    if (changed) {
       try { applyCfg(); refreshHome(); } catch (_) {}
     }
-
-    const choice = document.querySelector('.figchoice');
-    const illustration = choice?.querySelector('[data-figure="illustration"]');
-    const silhouette = choice?.querySelector('[data-figure="silhouette"]');
-    if (choice && illustration && silhouette && choice.firstElementChild !== illustration) {
-      choice.insertBefore(illustration, silhouette);
-    }
-  }
-
-  function reorderBodyDiagramChoices() {
-    const choice = document.querySelector('.figchoice');
-    const illustration = choice?.querySelector('[data-figure="illustration"]');
-    const silhouette = choice?.querySelector('[data-figure="silhouette"]');
-    if (!choice || !illustration || !silhouette) return;
-    if (choice.firstElementChild !== illustration) choice.insertBefore(illustration, silhouette);
   }
 
   function paintDraftSelection(body) {
     if (!body || !settingsDraft) return;
+    settingsDraft.figure = 'illustration';
     body.querySelectorAll('[data-figure]').forEach(btn => {
-      const on = btn.dataset.figure === settingsDraft.figure;
+      const on = btn.dataset.figure === 'illustration';
       btn.classList.toggle('on', on);
       btn.setAttribute('aria-pressed', String(on));
     });
@@ -61,14 +51,18 @@
   function enhanceSettings() {
     const body = document.querySelector('#setBody');
     if (!body) return;
-    if (body.dataset.confirmSettings === '1' && body.querySelector('#applyNewSettings')) return;
 
-    enforceIllustrationDefault();
-    reorderBodyDiagramChoices();
+    forceIllustrationOnly();
+    body.querySelectorAll('[data-figure="silhouette"]').forEach(el => el.remove());
+
+    if (body.dataset.confirmSettings === '1' && body.querySelector('#applyNewSettings')) {
+      if (settingsDraft) paintDraftSelection(body);
+      return;
+    }
 
     try {
       settingsDraft = {
-        figure: (typeof CFG !== 'undefined' && CFG.figure) ? CFG.figure : 'illustration',
+        figure: 'illustration',
         bg: (typeof CFG !== 'undefined' && CFG.bg) ? CFG.bg : '#EAEFEF'
       };
     } catch (_) {
@@ -112,14 +106,23 @@
       if (section.dataset.collapsible === '1') return;
       const h2 = section.querySelector(':scope > h2');
       if (!h2) return;
-      section.dataset.collapsible = '1'; section.classList.add('inj-collapse');
-      const content = document.createElement('div'); content.className = 'inj-collapse-body';
-      [...section.children].filter(el => el !== h2).forEach(el => content.appendChild(el)); section.appendChild(content);
-      const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'inj-collapse-toggle';
+      section.dataset.collapsible = '1';
+      section.classList.add('inj-collapse');
+      const content = document.createElement('div');
+      content.className = 'inj-collapse-body';
+      [...section.children].filter(el => el !== h2).forEach(el => content.appendChild(el));
+      section.appendChild(content);
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'inj-collapse-toggle';
       btn.setAttribute('aria-expanded', i === 0 ? 'true' : 'false');
       btn.innerHTML = `<span>${h2.innerHTML}</span><span class="inj-chevron" aria-hidden="true">⌄</span>`;
-      h2.replaceWith(btn); if (i !== 0) section.classList.add('collapsed');
-      btn.onclick = () => { const closed = section.classList.toggle('collapsed'); btn.setAttribute('aria-expanded', String(!closed)); };
+      h2.replaceWith(btn);
+      if (i !== 0) section.classList.add('collapsed');
+      btn.onclick = () => {
+        const closed = section.classList.toggle('collapsed');
+        btn.setAttribute('aria-expanded', String(!closed));
+      };
     });
   }
 
@@ -132,37 +135,74 @@
     if (!section || section.dataset.handSubsections === '1') return;
     const body = section.querySelector(':scope > .inj-collapse-body') || section;
     const headings = [...body.querySelectorAll(':scope > h3.sub')].filter(h => /^5\.\d+\b/.test((h.textContent || '').trim()));
-    if (!headings.length) return; section.dataset.handSubsections = '1';
+    if (!headings.length) return;
+    section.dataset.handSubsections = '1';
+
     headings.forEach(h => {
-      const originalId = h.id, title = h.textContent.trim(), nodes = []; let n = h.nextElementSibling;
-      while (n && !(n.matches('h3.sub') && /^5\.\d+\b/.test((n.textContent || '').trim()))) { nodes.push(n); n = n.nextElementSibling; }
-      const card = document.createElement('section'); card.className = 'hand-inj-sub collapsed'; if (originalId) card.id = originalId;
-      const subBody = document.createElement('div'); subBody.className = 'hand-inj-sub-body'; nodes.forEach(node => subBody.appendChild(node));
+      const originalId = h.id;
+      const title = h.textContent.trim();
+      const nodes = [];
+      let n = h.nextElementSibling;
+      while (n && !(n.matches('h3.sub') && /^5\.\d+\b/.test((n.textContent || '').trim()))) {
+        nodes.push(n);
+        n = n.nextElementSibling;
+      }
+      const card = document.createElement('section');
+      card.className = 'hand-inj-sub collapsed';
+      if (originalId) card.id = originalId;
+      const subBody = document.createElement('div');
+      subBody.className = 'hand-inj-sub-body';
+      nodes.forEach(node => subBody.appendChild(node));
       const firstImg = subBody.querySelector('.figs figure img');
       const firstCaption = subBody.querySelector('.figs figure figcaption')?.textContent?.trim() || `${title} injection approach`;
-      const toggle = document.createElement('button'); toggle.type = 'button'; toggle.className = 'hand-inj-sub-toggle'; toggle.setAttribute('aria-expanded', 'false');
-      const label = document.createElement('span'); label.className = 'hand-inj-sub-title'; label.textContent = title;
-      const hint = document.createElement('span'); hint.className = 'hand-inj-sub-hint'; hint.textContent = 'Tap to view landmarks, approach & safety';
-      const text = document.createElement('span'); text.className = 'hand-inj-sub-text'; text.append(label, hint);
-      const thumb = document.createElement('span'); thumb.className = 'hand-inj-thumb';
-      if (firstImg?.src) { const img = document.createElement('img'); img.src = firstImg.src; img.alt = firstCaption; img.loading = 'lazy'; thumb.appendChild(img); }
-      else { thumb.classList.add('no-image'); thumb.setAttribute('aria-hidden', 'true'); }
-      const chev = document.createElement('span'); chev.className = 'hand-inj-sub-chevron'; chev.setAttribute('aria-hidden', 'true'); chev.textContent = '⌄';
-      toggle.append(text, thumb, chev); card.append(toggle, subBody); h.replaceWith(card);
-      toggle.addEventListener('click', () => { const closed = card.classList.toggle('collapsed'); toggle.setAttribute('aria-expanded', String(!closed)); });
+      const toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'hand-inj-sub-toggle';
+      toggle.setAttribute('aria-expanded', 'false');
+      const label = document.createElement('span');
+      label.className = 'hand-inj-sub-title';
+      label.textContent = title;
+      const hint = document.createElement('span');
+      hint.className = 'hand-inj-sub-hint';
+      hint.textContent = 'Tap to view landmarks, approach & safety';
+      const text = document.createElement('span');
+      text.className = 'hand-inj-sub-text';
+      text.append(label, hint);
+      const thumb = document.createElement('span');
+      thumb.className = 'hand-inj-thumb';
+      if (firstImg?.src) {
+        const img = document.createElement('img');
+        img.src = firstImg.src;
+        img.alt = firstCaption;
+        img.loading = 'lazy';
+        thumb.appendChild(img);
+      } else {
+        thumb.classList.add('no-image');
+        thumb.setAttribute('aria-hidden', 'true');
+      }
+      const chev = document.createElement('span');
+      chev.className = 'hand-inj-sub-chevron';
+      chev.setAttribute('aria-hidden', 'true');
+      chev.textContent = '⌄';
+      toggle.append(text, thumb, chev);
+      card.append(toggle, subBody);
+      h.replaceWith(card);
+      toggle.addEventListener('click', () => {
+        const closed = card.classList.toggle('collapsed');
+        toggle.setAttribute('aria-expanded', String(!closed));
+      });
     });
   }
 
   function enhance() {
-    enforceIllustrationDefault();
-    reorderBodyDiagramChoices();
+    forceIllustrationOnly();
     enhanceSettings();
     if (!isInjectionTab()) return;
-    stripUltrasoundContent(); makeCollapsible(); makeHandSubsectionsCollapsible();
+    stripUltrasoundContent();
+    makeCollapsible();
+    makeHandSubsectionsCollapsible();
   }
 
-  /* Settings are edited as a draft. Capture these events before the app's
-     original immediate-apply handlers, then commit them only on Apply. */
   document.addEventListener('click', e => {
     const body = e.target.closest?.('#setBody');
     if (body && settingsDraft) {
@@ -172,31 +212,34 @@
       const apply = e.target.closest?.('#applyNewSettings');
 
       if (figure) {
-        e.preventDefault(); e.stopImmediatePropagation();
-        settingsDraft.figure = figure.dataset.figure;
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        settingsDraft.figure = 'illustration';
         paintDraftSelection(body);
         return;
       }
       if (swatch) {
-        e.preventDefault(); e.stopImmediatePropagation();
+        e.preventDefault();
+        e.stopImmediatePropagation();
         settingsDraft.bg = swatch.dataset.bg;
         paintDraftSelection(body);
         return;
       }
       if (reset) {
-        e.preventDefault(); e.stopImmediatePropagation();
+        e.preventDefault();
+        e.stopImmediatePropagation();
         settingsDraft = { figure: 'illustration', bg: '#EAEFEF' };
         paintDraftSelection(body);
         return;
       }
       if (apply) {
-        e.preventDefault(); e.stopImmediatePropagation();
+        e.preventDefault();
+        e.stopImmediatePropagation();
         try {
-          CFG.figure = settingsDraft.figure;
+          CFG.figure = 'illustration';
           CFG.bg = settingsDraft.bg;
           applyCfg();
           refreshHome();
-          localStorage.setItem(DEFAULT_MIGRATION_KEY, '1');
         } catch (_) {}
         settingsDraft = null;
         try { closeSettings(); } catch (_) {}
@@ -205,11 +248,19 @@
     }
 
     if (!isHandInjection()) return;
-    const link = e.target.closest?.('.sidenav a[href^="#p-"]'); if (!link) return;
-    const card = document.querySelector(link.getAttribute('href')); if (!card?.classList.contains('hand-inj-sub')) return;
+    const link = e.target.closest?.('.sidenav a[href^="#p-"]');
+    if (!link) return;
+    const card = document.querySelector(link.getAttribute('href'));
+    if (!card?.classList.contains('hand-inj-sub')) return;
     const outer = card.closest('.inj-collapse');
-    if (outer?.classList.contains('collapsed')) { outer.classList.remove('collapsed'); outer.querySelector(':scope > .inj-collapse-toggle')?.setAttribute('aria-expanded', 'true'); }
-    if (card.classList.contains('collapsed')) { card.classList.remove('collapsed'); card.querySelector(':scope > .hand-inj-sub-toggle')?.setAttribute('aria-expanded', 'true'); }
+    if (outer?.classList.contains('collapsed')) {
+      outer.classList.remove('collapsed');
+      outer.querySelector(':scope > .inj-collapse-toggle')?.setAttribute('aria-expanded', 'true');
+    }
+    if (card.classList.contains('collapsed')) {
+      card.classList.remove('collapsed');
+      card.querySelector(':scope > .hand-inj-sub-toggle')?.setAttribute('aria-expanded', 'true');
+    }
   }, true);
 
   document.addEventListener('input', e => {
@@ -221,7 +272,6 @@
     paintDraftSelection(body);
   }, true);
 
-  /* Closing settings without Apply discards the draft. */
   document.addEventListener('click', e => {
     if (e.target.closest?.('#setClose')) settingsDraft = null;
   }, false);
