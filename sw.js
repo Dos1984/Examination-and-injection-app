@@ -1,5 +1,5 @@
 /* MSK Examination & Injection Guide — offline service worker */
-const VERSION = 'msk-v20';
+const VERSION = 'msk-v21';
 const SHELL = `${VERSION}-shell`;
 const SHELL_FILES = [
   'manifest.webmanifest',
@@ -25,7 +25,7 @@ self.addEventListener('activate', e => e.waitUntil(
 ));
 
 function enhanceHtml(html) {
-  /* Illustration is the application default; Silhouette remains selectable. */
+  /* Illustration is the only supported body-map mode. */
   html = html.replace(
     "const DEFAULTS = { bg: '#EAEFEF', figure: 'silhouette' };",
     "const DEFAULTS = { bg: '#EAEFEF', figure: 'illustration' };"
