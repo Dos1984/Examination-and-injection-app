@@ -1,0 +1,27 @@
+name: Rebuild Foot and Ankle source
+on:
+  push:
+    paths:
+      - 'tools/rebuild-foot-section-source.py'
+      - '.github/workflows/rebuild-foot-source.yml'
+permissions:
+  contents: write
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Rebuild actual Foot and Ankle source section
+        run: python tools/rebuild-foot-section-source.py
+      - name: Commit rebuilt index.html
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git diff --cached --quiet || git commit -m 'Rebuild Foot and Ankle section in index source'
+          git push
