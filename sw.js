@@ -1,5 +1,5 @@
 /* MSK Examination & Injection Guide — offline service worker */
-const VERSION = 'msk-v32';
+const VERSION = 'msk-v33';
 const SHELL = `${VERSION}-shell`;
 const SHELL_FILES = [
   'manifest.webmanifest',
@@ -54,14 +54,14 @@ function enhanceHtml(html) {
     '"src": "Olecranon_Bursa_Replacement", "caption": "Olecranon bursa aspiration/injection approach."'
   );
 
-  if (!html.includes('ui-landmark.css')) html = html.replace('</head>', '<link rel="stylesheet" href="ui-landmark.css?v=32"></head>');
-  if (!html.includes('ui-landmark.js')) html = html.replace('</body>', '<script src="ui-landmark.js?v=32"></script></body>');
-  if (!html.includes('trigger-fix-v16.js')) html = html.replace('</body>', '<script src="trigger-fix-v16.js?v=32"></script></body>');
-  if (!html.includes('guide-integrated-v24.js')) html = html.replace('</body>', '<script src="guide-integrated-v24.js?v=32"></script></body>');
-  if (!html.includes('region-layout-v26.js')) html = html.replace('</body>', '<script src="region-layout-v26.js?v=32"></script></body>');
-  if (!html.includes('presentation-layout-v28.js')) html = html.replace('</body>', '<script src="presentation-layout-v28.js?v=32"></script></body>');
-  if (!html.includes('numbering-v29.js')) html = html.replace('</body>', '<script src="numbering-v29.js?v=32"></script></body>');
-  if (!html.includes('personal-images-v30.js')) html = html.replace('</body>', '<script src="personal-images-v30.js?v=32"></script></body>');
+  if (!html.includes('ui-landmark.css')) html = html.replace('</head>', '<link rel="stylesheet" href="ui-landmark.css?v=33"></head>');
+  if (!html.includes('ui-landmark.js')) html = html.replace('</body>', '<script src="ui-landmark.js?v=33"></script></body>');
+  if (!html.includes('trigger-fix-v16.js')) html = html.replace('</body>', '<script src="trigger-fix-v16.js?v=33"></script></body>');
+  if (!html.includes('guide-integrated-v24.js')) html = html.replace('</body>', '<script src="guide-integrated-v24.js?v=33"></script></body>');
+  if (!html.includes('region-layout-v26.js')) html = html.replace('</body>', '<script src="region-layout-v26.js?v=33"></script></body>');
+  if (!html.includes('presentation-layout-v28.js')) html = html.replace('</body>', '<script src="presentation-layout-v28.js?v=33"></script></body>');
+  if (!html.includes('numbering-v29.js')) html = html.replace('</body>', '<script src="numbering-v29.js?v=33"></script></body>');
+  if (!html.includes('personal-images-v30.js')) html = html.replace('</body>', '<script src="personal-images-v30.js?v=33"></script></body>');
 
   if (!html.includes('data-msk-sw-updater')) html = html.replace('</body>', `<script data-msk-sw-updater>
   if ('serviceWorker' in navigator) {
