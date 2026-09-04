@@ -1,5 +1,5 @@
 /* MSK Examination & Injection Guide — offline service worker */
-const VERSION = 'msk-v25';
+const VERSION = 'msk-v26';
 const SHELL = `${VERSION}-shell`;
 const SHELL_FILES = [
   'manifest.webmanifest',
@@ -7,6 +7,7 @@ const SHELL_FILES = [
   'ui-landmark.js',
   'trigger-fix-v16.js',
   'guide-integrated-v24.js',
+  'region-layout-v26.js',
   'images/direct-a1-pulley-schematic-final.png',
   'direct-a1-pulley-clinical-photo-final.jpg',
   'icons/icon-192.png',
@@ -40,10 +41,11 @@ function enhanceHtml(html) {
     '"src": "Olecranon_Bursa_Replacement", "caption": "Olecranon bursa aspiration/injection approach."'
   );
 
-  if (!html.includes('ui-landmark.css')) html = html.replace('</head>', '<link rel="stylesheet" href="ui-landmark.css?v=25"></head>');
-  if (!html.includes('ui-landmark.js')) html = html.replace('</body>', '<script src="ui-landmark.js?v=25"></script></body>');
-  if (!html.includes('trigger-fix-v16.js')) html = html.replace('</body>', '<script src="trigger-fix-v16.js?v=25"></script></body>');
-  if (!html.includes('guide-integrated-v24.js')) html = html.replace('</body>', '<script src="guide-integrated-v24.js?v=25"></script></body>');
+  if (!html.includes('ui-landmark.css')) html = html.replace('</head>', '<link rel="stylesheet" href="ui-landmark.css?v=26"></head>');
+  if (!html.includes('ui-landmark.js')) html = html.replace('</body>', '<script src="ui-landmark.js?v=26"></script></body>');
+  if (!html.includes('trigger-fix-v16.js')) html = html.replace('</body>', '<script src="trigger-fix-v16.js?v=26"></script></body>');
+  if (!html.includes('guide-integrated-v24.js')) html = html.replace('</body>', '<script src="guide-integrated-v24.js?v=26"></script></body>');
+  if (!html.includes('region-layout-v26.js')) html = html.replace('</body>', '<script src="region-layout-v26.js?v=26"></script></body>');
   return html;
 }
 
