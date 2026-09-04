@@ -440,6 +440,7 @@ ol.steps li:last-child::after{display:none}
   body{background:#fff}.section{border:0;padding:0;box-shadow:none;break-inside:avoid}
 }
 </style>
+<link rel="stylesheet" href="ui-landmark.css?v=33">
 </head>
 <body>
 <div class="topbar">
@@ -525,13 +526,16 @@ const BG_PRESETS = [
   { id: 'sage',  name: 'Soft sage',  bg: '#E8EEE7' },
   { id: 'sand',  name: 'Clinic sand', bg: '#EFEBE6' }
 ];
-const DEFAULTS = { bg: '#EAEFEF', figure: 'silhouette' };
+const DEFAULTS = { bg: '#EAEFEF', figure: 'illustration' };
 let CFG = { ...DEFAULTS };
 
 try {
   const saved = JSON.parse(localStorage.getItem('msk.settings') || 'null');
   if (saved && typeof saved === 'object') CFG = { ...CFG, ...saved };
 } catch (e) { /* storage unavailable — settings simply won't persist */ }
+/* The legacy silhouette is no longer a supported choice. Normalise old saved settings
+   before the first render so the home screen never flashes the retired figure. */
+CFG.figure = 'illustration';
 
 function saveCfg() {
   try { localStorage.setItem('msk.settings', JSON.stringify(CFG)); } catch (e) {}
@@ -1094,5 +1098,12 @@ applyCfg();
 route();
 
 </script>
+<script src="ui-landmark.js?v=33"></script>
+<script src="trigger-fix-v16.js?v=33"></script>
+<script src="guide-integrated-v24.js?v=33"></script>
+<script src="region-layout-v26.js?v=33"></script>
+<script src="presentation-layout-v28.js?v=33"></script>
+<script src="numbering-v29.js?v=33"></script>
+<script src="personal-images-v30.js?v=33"></script>
 </body>
 </html>
