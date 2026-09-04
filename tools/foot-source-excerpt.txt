@@ -5,6 +5,9 @@ Subtalar joint / sinus tarsi: 4148337
 Landmark-guided and image-guided approaches: 4145486
 Plantar fascia origin: 4151527
 Morton neuroma / intermetatarsal bursa: 4156904
+function figures: 4184653
+function renderSection: -1
+function renderRegion: 4188085
 
 --- SOURCE EXCERPT ---
 s limited and largely observational. It is reasonable for short-term symptom control while the underlying load problem is addressed, but should not be repeated indefinitely."}]}], "id": "injection-technique-for-pes-anserine-bursitis"}, {"title": "Iliotibial band (ITB) syndrome", "video": false, "parts": [{"sub": null, "content": [{"t": "p", "text": "ITB syndrome is also known as runner’s knee. It can account for up to 22% of overuse injuries in runners. Being an overuse injury, it is caused by repeated trauma rather than a specific incident.", "strong": false}, {"t": "p", "text": "The ITB is a long, thin band of fascia that attached to the Tensor Fascia Latae muscle, and Gluteus Maximus, and at the bottom it attaches to the tibia and femoral condyle.", "strong": false}, {"t": "p", "lead": "History", "text": "It is usually caused by altered running biomechanics due to underlying muscular imbalances. The patient usually complains of a sharp or burning pain just above the outer part of the knee, pain that worsens with continuance of running or other repetitive activities, swelling over the outside of the knee, pain during early knee bending and gradual onset of symptoms which if they persist for greater than 4 weeks can cause major sport or activity interference. A ITB length test and pain reproduction over the greater trochanter can be useful to aid this diagnosis but predominantly the diagnosis is made by taking a full patient history."}]}, {"sub": "Treatment", "content": [{"t": "p", "text": "General advice is to avoid exacerbating activity for a period to reduce symptoms. Consider NSAID’s and a referral to physiotherapy. A guided corticosteroid injection can also be considered but there is minimal evidence to support this treatment approach.", "strong": false}]}], "id": "iliotibial-band-itb-syndrome"}, {"title": "Injection Technique for Iliotibial Band Bursitis", "video": false, "parts": [{"sub": null, "content": [{"t": "p", "text": "Injection lateral to the patellar tendon for the bursa deep to the distal iliotibial band. ITB syndrome is an overuse condition and the injection is an adjunct at best."}]}, {"sub": "Indications and case selection", "content": [{"t": "list", "items": [{"text": "Lateral knee pain reproduced at around 30° of flexion, with tenderness over the lateral femoral condyle or distal ITB."}, {"text": "Runners and cyclists with load-related lateral knee pain that has not settled with load modification and rehabilitation."}]}]}, {"sub": "Position, landmarks and preparation", "content": [{"t": "landmarks", "rows": [{"label": "Position", "item": {"text": "Seated or supine with the leg in slight flexion, supported on a pillow."}}, {"label": "Landmarks", "item": {"text": "Lateral edge of the patellar tendon, proximal to the tibial tubercle."}}, {"label": "Plane", "item": {"text": "Insert horizontally.", "sub": ["The needle must stay out of the patellar tendon itself."]}}]}]}, {"sub": "Technique — step by step", "content": [{"t": "steps", "items": [{"text": "Support the leg in slight flexion on a pillow."}, {"text": "Identify the lateral border of the patellar tendon and the tibial tubercle, and mark the entry point lateral to the tendon and proximal to the tubercle."}, {"text": "Prepare the skin aseptically."}, {"text": "Insert the needle horizontally, directed toward the bursa and deliberately away from the tendon."}, {"text": "Confirm you are not within tendon: injection into tendon is painful and meets firm resistance."}, {"text": "Aspirate, then inject as a bolus."}]}, {"t": "callout", "kind": "evidence", "title": "Endpoint", "body": "Smooth, low-resistance flow with no pain reported on injection."}]}, {"sub": "Suggested doses and equipment", "content": [{"t": "list", "items": [{"text": "Blue (23G) needle"}, {"text": "20mg Depo-Medrone / 20mg Kenalog"}, {"text": "1.5ml 2% lidocaine"}, {"text": "Total volume: 2ml"}]}, {"t": "callout", "kind": "warn", "title": "Guidance", "body": "This injection is best performed under ultrasound guidance."}]}, {"sub": "Aftercare and advice", "content": [{"t": "list", "items": [{"text": "Relative rest from the provoking activity, then graded return to running or cycling volume."}, {"text": "Refer for assessment of running biomechanics, hip abductor strength and training load — these determine whether symptoms recur."}]}]}, {"sub": "Pitfalls and safety", "content": [{"t": "list", "items": [{"text": "Never inject into the patellar tendon."}, {"text": "Evidence supporting corticosteroid for ITB syndrome is minimal; be honest with the patient that load management and rehabilitation carry the treatment."}]}, {"t": "callout", "kind": "evidence", "title": "Evidence note", "body": "There is minimal high-quality evidence supporting corticosteroid injection in iliotibial band syndrome. Load modification, gluteal strengthening and correction of training error remain the mainstay."}]}], "id": "injection-technique-for-iliotibial-band-bursitis"}, {"title": "Summary", "video": false, "parts": [{"sub": null, "content": [{"t": "list", "items": [{"text": "Do not inject where there has been a recent history of trauma. You may need to aspirate the knee to make the patient more comfortable and allow more movement at the knee but if there is anything suspicious looking in that aspirate you will need to send it to be analysed."}, {"text": "A good knowledge of your anatomical landmarks will aid successful injection therapy."}]}]}], "id": "summary"}, {"title": "Resources", "video": false, "parts": [{"sub": null, "content": [{"t": "list", "items": [{"text": "Patient.info – Patient Information - Knee Pain Exercises"}, {"text": "Versus Arthritis – Patient Information - Knee Pain Exercises"}, {"text": "Versus Arthritis - Patient Information – Knee Replacement"}, {"text": "NICE – Clinical Information - Knee Pain Assessment"}, {"text": "Torbay Charts – Clinical Information – Knee Arthritis"}]}]}], "id": "resources"}]}, {"id": "video", "label": "Video", "videos": [{"id": "knee-joint-anterior-approach", "file": "Anterior_approach_knee_injection_video", "title": "Knee joint — anterior approach", "blurb": "Anterior access point, roughly one fingertip above the lateral tibial plateau and one fingertip lateral to the patellar ligament. Useful when the patient cannot extend the knee comfortably."}, {"id": "knee-joint-lateral-superolateral-approach", "file": "Lateral_Knee_approach_injection_video_", "title": "Knee joint — lateral (superolateral) approach", "blurb": "Entry under the lateral border of the patella with the knee extended and quadriceps relaxed. The superolateral route has the best reported landmark accuracy and is the easiest approach in an effused knee."}, {"id": "knee-joint-medial-approach", "file": "Medial_Knee_approach_injection_video_", "title": "Knee joint — medial approach", "blurb": "Medial patellofemoral route described in the handbook technique above: just posterior to the medial patellar border, angled laterally and slightly anteriorly beneath the patella."}, {"id": "pes-anserine-bursa", "file": "Pes_Anserine_Bursitis_Injection", "title": "Pes anserine bursa", "blurb": "Superficial injection at the conjoined tendon insertion on the proximal medial tibia, distal to the joint line."}]}]}, {"id": "foot", "name": "Foot & Ankle", "tagline": "Tibiotalar, subtalar, plantar fascia and tendon sheaths", "hero": "Foot_and_Ankle_Examination_and_Injection_Guide__image2", "tabs": [{"id": "exam", "label": "Examination", "sections": [{"title": "1. The clinical logic: localise before you inject", "video": false, "parts": [{"sub": null, "content": [{"t": "p", "lead": "Foot and ankle pain is anatomically dense", "text": "a few centimetres may contain joint capsule, tendon sheath, ligament, bursa, fascia, nerve and vessels. The examination should therefore answer three questions: (1) where is the pain generator, (2) is it articular, peri-articular, neurological or referred, and (3) is injection actually indicated?"}, {"t": "p", "lead": "Articular pattern", "text": "joint-line tenderness, effusion/synovial thickening, painful or restricted passive movement, and a capsular pattern."}, {"t": "p", "lead": "Tendon / tendon-sheath pattern", "text": "pain with resisted action, focal tenderness along the tendon or sheath, sometimes crepitus; passive stretch may reproduce pain."}, {"t": "p", "lead": "Ligament pattern", "text": "trauma mechanism plus focal ligament tenderness and pain/laxity with stress testing."}, {"t": "p", "lead": "Enthesis / fascia pattern", "text": "highly localised insertional tenderness, often load-related; plantar fascia pain is classically worst on first steps after rest."}, {"t": "p", "lead": "Neurological pattern", "text": "paraesthesia, altered sensation or Tinel-type reproduction; consider tarsal tunnel, interdigital nerve pathology and proximal referral."}, {"t": "p", "lead": "Inflammatory rheumatology pattern", "text": "warmth, synovitis, multiple joints/entheses, dactylitis, psoriasis, inflammatory back pain, gout features or systemic symptoms."}]}], "id": "1-the-clinical-logic-localise-before-you-inject"}, {"title": "2. Foot and ankle examination - a reproducible sequence", "video": false, "parts": [{"sub": "2.1 Preparation and observation", "content": [{"t": "p", "text": "Expose both lower legs, ankles and feet. Compare sides. Ask the patient to point with one finger to the maximal pain before touching the foot.", "strong": false}, {"t": "p", "lead": "Observe standing from front, side and behind", "text": "hindfoot valgus/varus, arch height, forefoot abduction, hallux valgus/rigidus, claw/hammer toes, swelling, erythema, scars, callosities and shoe wear."}, {"t": "p", "lead": "Assess gait", "text": "antalgia, heel strike, mid-stance, push-off, stride length and symmetry. Add heel walking, toe walking and tandem gait if safe."}, {"t": "p", "lead": "Functional loading", "text": "single-leg stance and single-leg heel raise. Failure or hindfoot that fails to invert during heel rise raises concern for posterior tibial tendon dysfunction."}, {"t": "p", "text": "If trauma is acute, apply an appropriate fracture-screening rule and have a low threshold for imaging when focal bony tenderness or inability to bear weight is present.", "strong": false}]}, {"sub": "2.2 Look, feel, move", "content": [{"t": "table", "header": ["Element", "Practical guide"], "rows": [["LOOK", "Alignment, swelling/effusion, bruising, erythema, deformity, skin/nail disease, callus pattern, muscle wasting and previous surgery."], ["FEEL", "Temperature; tibiotalar joint line; malleoli; ATFL/CFL/deltoid; sinus tarsi; Achilles insertion and mid-substance; retrocalcaneal bursa; posterior tibial and peroneal tendons; navicular; base of 5th metatarsal; midfoot/TMT joints; MTPs; metatarsal heads/interspaces; plantar fascia origin."], ["MOVE - ACTIVE", "Dorsiflexion, plantarflexion, inversion, eversion; great-toe flexion/extension. Note pain, range and motor control."], ["MOVE - PASSIVE", "Repeat ankle and hindfoot movements, compare sides, assess end-feel and whether pain is joint-line or extra-articular."], ["RESISTED", "Dorsiflexion (tibialis anterior), plantarflexion (calf/Achilles), inversion (tibialis posterior), eversion (peroneals), great-toe movements."], ["NEUROVASCULAR", "Dorsalis pedis/posterior tibial pulses, capillary refill when relevant; sensation in superficial/deep peroneal, tibial, sural and saphenous distributions; motor testing where neuropathy is suspected."]]}]}, {"sub": "2.3 Passive and resisted movement set", "content": [{"t": "figures", "items": [{"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image3", "caption": "Passive dorsiflexion"}, {"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image4", "caption": "Passive plantarflexion"}, {"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image5", "caption": "Passive inversion"}, {"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image6", "caption": "Passive eversion"}, {"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image7", "caption": "Subtalar abduction-adduction"}, {"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image8", "caption": "Midtarsal passive testing"}, {"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image9", "caption": "Resisted dorsiflexion"}, {"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image10", "caption": "Resisted plantarflexion"}, {"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image11", "caption": "Resisted eversion"}, {"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image12", "caption": "Resisted inversion"}]}, {"t": "callout", "kind": "info", "title": "Source teaching point", "body": "The supplied examination material emphasises palpation for heat, swelling and synovial thickening, then passive ankle/hindfoot/midtarsal movement followed by resisted dorsiflexion, plantarflexion, eversion and inversion. Use the pattern of provocation to localise the structure rather than relying on a single test."}]}, {"sub": "2.4 Key special tests and what they answer", "content": [{"t": "table", "header": ["Element", "Practical guide"], "rows": [["Anterior drawer", "ATFL-dominant lateral instability. Stabilise distal tibia, cup heel, ankle slightly plantarflexed; compare translation/end point with contralateral side."], ["Talar tilt", "CFL/lateral complex with inversion stress; deltoid with eversion stress. Compare laxity and pain."], ["Squeeze / external-rotation stress", "Raises suspicion of syndesmotic injury when pain is reproduced over distal tibiofibular syndesmosis."], ["Thompson/Simmonds calf squeeze", "Absent or markedly reduced plantarflexion suggests Achilles rupture; urgent pathway if suspected."], ["Windlass", "Passive great-toe dorsiflexion tensions plantar fascia; reproduction of plantar-medial heel pain supports plantar fascia involvement."], ["Mulder / forefoot squeeze", "Pain/click or paraesthesia in an intermetatarsal space supports interdigital nerve/intermetatarsal bursal pathology."], ["Tinel at tarsal tunnel", "Percussion posterior/inferior to medial malleolus reproducing distal paraesthesia supports tibial nerve irritation."], ["Silfverskiold concept", "Compare ankle dorsiflexion with knee flexed vs extended to assess gastrocnemius contribution to equinus."], ["Single-leg heel rise", "Calf/Achilles function and posterior tibial tendon/hindfoot mechanics; observe heel inversion and endurance."]]}]}, {"sub": "2.5 Capsular patterns from the supplied teaching material", "content": [{"t": "p", "lead": "Ankle", "text": "proportionally greater loss of plantarflexion than dorsiflexion."}, {"t": "p", "lead": "Subtalar", "text": "greater loss of adduction."}, {"t": "p", "lead": "Forefoot", "text": "loss of adduction, dorsiflexion and supination."}, {"t": "p", "lead": "Great toe", "text": "greater loss of extension than flexion."}, {"t": "p", "lead": "Other toes", "text": "greater loss of flexion than extension."}]}], "id": "2-foot-and-ankle-examination-a-reproducible-sequ"}, {"title": "8. Rapid-reference examination map", "video": false, "parts": [{"sub": null, "content": [{"t": "table", "header": ["Element", "Practical guide"], "rows": [["Anterior ankle pain", "Tibiotalar synovitis/OA, anterior impingement, tibialis anterior/extensor tendons, osteochondral lesion."], ["Lateral ankle pain", "ATFL/CFL, peroneals, sinus tarsi/subtalar joint, fibula, syndesmosis."], ["Medial ankle pain", "Deltoid, posterior tibial/FHL/FDL tendons, tarsal tunnel, medial talar pathology."], ["Posterior heel pain", "Achilles insertion/mid-substance, retrocalcaneal bursa, Haglund region, calcaneal stress injury."], ["Plantar heel pain", "Plantar fasciopathy, heel fat-pad disorder, calcaneal stress injury, nerve entrapment; consider inflammatory enthesitis."], ["Midfoot pain", "Talonavicular/naviculocuneiform/TMT OA or synovitis, stress injury, tibialis posterior insertion, inflammatory arthritis."], ["Forefoot pain", "MTP synovitis/OA, gout, stress fracture, plantar plate, Morton neuroma/intermetatarsal bursitis, callus/fat-pad loss."]]}]}], "id": "8-rapid-reference-examination-map"}]}, {"id": "injection", "label": "Injection", "sections": [{"title": "3. Pre-injection decision and safety checklist", "video": false, "parts": [{"sub": null, "content": [{"t": "table", "header": ["Element", "Practical guide"], "rows": [["Confirm target", "Diagnosis and exact structure are clinically plausible. Use imaging when anatomy is uncertain, the joint is small/deep, prior surgery/deformity exists, or a selective diagnostic block is required."], ["Exclude infection", "Do not inject a suspected septic joint or through local infection. Aspirate an unexplained effusion when infection/crystal disease is in the differential and send appropriate samples."], ["Consent", "Explain purpose (diagnostic vs therapeutic), alternatives, expected time course, possibility of no benefit/recurrence, and relevant adverse effects."], ["Medication / comorbidity", "Check allergy, anticoagulants/bleeding risk, diabetes, pregnancy, immunosuppression, recent infection/vaccination considerations per local policy, and planned surgery."], ["Asepsis", "Clean, well-lit setting; hand hygiene; skin antisepsis; sterile equipment; no-touch technique. Follow local infection-control policy."], ["Aftercare", "Avoid overuse for ~24 h after intra-articular therapy; routine immobilisation is not recommended. Give explicit safety-net advice for escalating pain, redness, fever or systemic illness."]]}, {"t": "callout", "kind": "evidence", "title": "Contemporary evidence", "body": "EULAR recommends documented informed consent, aseptic technique, consideration of imaging to improve accuracy, glucose monitoring for 1-3 days after intra-articular glucocorticoid in people with diabetes, individualised decisions on repeat injections, and avoiding overuse for 24 hours without immobilising the joint."}]}], "id": "3-pre-injection-decision-and-safety-checklist"}, {"title": "4. Landmark-guided and image-guided approaches", "video": false, "parts": [{"sub": null, "content": [{"t": "p", "text": "The descriptions below are anatomy/trajectory guides, not drug-prescribing instructions. The supplied documents contain historical steroid doses and needle sizes; these vary by preparation, target and local policy. Use your current formulary/SPC and competency framework.", "strong": false}, {"t": "callout", "kind": "info", "title": "When ultrasound is especially valuable", "body": "Small midfoot joints, subtalar joint, tendon sheaths, altered anatomy/osteophytes, obesity, prior surgery, diagnostic injections requiring selectivity, suspected adjacent neurovascular structures, and any target where a prior landmark attempt failed. Published reviews generally show higher placement accuracy with ultrasound, particularly in ankle/hindfoot/midfoot targets."}]}, {"sub": "4.1 Tibiotalar (ankle) joint", "content": [{"t": "figures", "items": [{"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image13", "caption": "Anatomical landmark diagram: anterior ankle target relative to tibialis anterior / EHL"}, {"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image14", "caption": ""}]}, {"t": "landmarks", "rows": [{"label": "Indications", "item": {"text": "Synovitis/effusion, inflammatory arthritis flare in a limited number of joints, symptomatic OA, aspiration for diagnosis, or a selective diagnostic/therapeutic injection."}}, {"label": "Position", "item": {"text": "Supine or seated.", "sub": ["Ankle neutral to slight plantarflexion.", "Tendons can be made more visible/palpable by active dorsiflexion before skin preparation."]}}, {"label": "Anteromedial Landmark Approach", "item": {"text": "Palpate tibialis anterior tendon and the tibia-talus joint line.", "sub": ["A common entry is immediately adjacent to the tendon at the palpable soft spot.", "Trajectory is posterior into the joint, adjusted to the local joint line."]}}, {"label": "Anterolateral Landmark Approach", "item": {"text": "Alternative soft spot lateral to the extensor tendons, avoiding superficial peroneal nerve branches and dorsalis pedis/anterior tibial neurovascular structures."}}, {"label": "Endpoint", "item": {"text": "Easy intra-articular flow after correct placement.", "sub": ["Aspirated synovial fluid also confirms joint access.", "Never force injectate against high resistance."]}}, {"label": "Ultrasound", "item": {"text": "Long-axis anterior approach over talar dome.", "sub": ["Identify dorsalis pedis artery and tendons first, then advance in-plane to the anterior recess/talar cartilage."]}}]}, {"t": "p", "lead": "Supplementary clinical demonstration", "text": "lateral approach to the tibiotalar (ankle) joint, anterior to the lateral malleolus. This image was previously misplaced in the MTP section."}]}, {"sub": "4.2 Subtalar joint / sinus tarsi", "content": [{"t": "figures", "items": [{"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image15", "caption": ""}, {"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image16", "caption": ""}]}, {"t": "landmarks", "rows": [{"label": "Clinical localisation", "item": {"text": "Deep hindfoot pain, pain with inversion/eversion or calcaneal adduction-abduction.", "sub": ["Distinguish from lateral ligament, peroneal and ankle-joint pain."]}}, {"label": "Lateral / sinus tarsi approach", "item": {"text": "A practical landmark route enters around 1 cm inferodistal to the lateral malleolus toward the sinus tarsi/subtalar articulation.", "sub": ["Exact trajectory varies with the component targeted."]}}, {"label": "Medial historical approach", "item": {"text": "The supplied Saunders material describes a technically difficult approach just above/slightly posterior to the sustentaculum tali, with redirection toward the anterior compartment."}}, {"label": "Why image guidance matters", "item": {"text": "The joint is irregular and communicates/extravasates unpredictably.", "sub": ["Ultrasound or fluoroscopy improves confidence and selectivity, especially for diagnostic blocks."]}}]}]}, {"sub": "4.3 Midtarsal, naviculocuneiform and tarsometatarsal joints", "content": [{"t": "figures", "items": [{"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image17", "caption": ""}]}, {"t": "landmarks", "rows": [{"label": "Localise", "item": {"text": "Use passive midfoot flexion/extension/inversion/eversion, focal dorsal joint-line palpation and local gliding to identify the symptomatic articulation."}}, {"label": "Landmark concept", "item": {"text": "Foot supported neutral.", "sub": ["Mark the tender dorsal joint line.", "Enter perpendicular or slightly oblique while avoiding extensor tendons and dorsalis pedis vessels."]}}, {"label": "Preferred strategy", "item": {"text": "Because these are small, osteophyte-prone joints with relatively low blind accuracy, ultrasound or fluoroscopy is often preferable when available."}}]}]}, {"sub": "4.4 Metatarsophalangeal (MTP) and toe joints", "content": [{"t": "figures", "items": [{"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image18", "caption": ""}, {"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image19", "caption": ""}]}, {"t": "landmarks", "rows": [{"label": "Localise", "item": {"text": "Passively flex/extend the toe while palpating the dorsal joint line.", "sub": ["Note effusion, synovitis, hallux valgus/rigidus and extensor tendon position."]}}, {"label": "Dorsal / dorsolateral approach", "item": {"text": "Apply gentle traction to open the joint.", "sub": ["Enter at the joint line from a side/dorsolateral angle so the needle tip passes beneath rather than through the extensor tendon."]}}, {"label": "Small toe joints", "item": {"text": "Medial or lateral entry under traction can be easier than a direct dorsal approach."}}, {"label": "Diagnostic aspiration", "item": {"text": "If an acutely inflamed first MTP could be gout or infection, aspiration for crystal analysis/culture may be more important than immediate steroid injection."}}]}]}, {"sub": "4.5 Plantar fascia origin", "content": [{"t": "figures", "items": [{"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image20", "caption": ""}, {"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image21", "caption": ""}, {"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image22", "caption": "Surface landmark for medial calcaneal tubercle"}, {"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image2", "caption": "Needle placement demonstration"}]}, {"t": "landmarks", "rows": [{"label": "Indication threshold", "item": {"text": "Plantar fasciopathy is usually managed with load modification, footwear/orthoses, stretching/strengthening and time.", "sub": ["Consider injection only selectively after discussing limited/short-term benefit and risks."]}}, {"label": "Target", "item": {"text": "Maximal tenderness at the plantar-medial calcaneal tubercle / medial fascial origin."}}, {"label": "Medial approach", "item": {"text": "Prefer entry through thinner medial skin, advancing toward the calcaneal origin rather than traversing the weight-bearing heel pad.", "sub": ["Avoid injecting into the heel fat pad."]}}, {"label": "Direct plantar approach", "item": {"text": "Described in historical/local material but is more painful and traverses the heel pad.", "sub": ["Generally less attractive when a medial or ultrasound-guided approach is available."]}}, {"label": "Ultrasound", "item": {"text": "Visualise fascia thickness, calcaneal cortex and heel pad.", "sub": ["Place injectate adjacent to the diseased fascial origin while avoiding intrafascial/high-pressure injection according to local technique."]}}, {"label": "Key risks", "item": {"text": "Post-injection pain, skin/fat-pad atrophy, depigmentation, infection, nerve injury and plantar fascia rupture."}}]}, {"t": "callout", "kind": "evidence", "title": "Important nuance", "body": "One supplied local handbook recommends ultrasound guidance if corticosteroid injection is considered for plantar fasciopathy, noting that symptoms often recur and that fat-pad atrophy or fascial rupture can be more disabling than the original condition."}]}, {"sub": "4.6 Posterior tibial tendon sheath", "content": [{"t": "figures", "items": [{"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image23", "caption": ""}]}, {"t": "landmarks", "rows": [{"label": "Examination", "item": {"text": "Tenderness/crepitus posterior and inferior to medial malleolus.", "sub": ["Pain with resisted inversion/plantarflexion.", "Assess single-leg heel rise and acquired flatfoot mechanics."]}}, {"label": "Landmark concept", "item": {"text": "Approach tangentially alongside the tendon behind the medial malleolus, directing proximally within the sheath.", "sub": ["The target is the sheath, never the tendon substance."]}}, {"label": "Ultrasound", "item": {"text": "Strongly useful: confirms tenosynovitis/tear, shows tibial neurovascular bundle, and permits in-plane peritendinous/sheath placement."}}, {"label": "Do not inject", "item": {"text": "Suspected tendon tear without imaging/appropriate specialist assessment.", "sub": ["Intratendinous placement."]}}]}]}, {"sub": "4.7 Peroneal tendon sheath", "content": [{"t": "figures", "items": [{"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image24", "caption": ""}]}, {"t": "landmarks", "rows": [{"label": "Examination", "item": {"text": "Pain/crepitus behind or below lateral malleolus.", "sub": ["Pain with resisted eversion and passive inversion.", "Assess for instability/subluxation and associated lateral ligament injury."]}}, {"label": "Landmark concept", "item": {"text": "Identify the peroneal tendons behind the lateral malleolus.", "sub": ["A tangential proximal trajectory may enter the common sheath.", "Avoid tendon substance."]}}, {"label": "Ultrasound", "item": {"text": "Preferred when tear, subluxation or complex tenosynovitis is possible.", "sub": ["Permits dynamic assessment before injection."]}}]}]}, {"sub": "4.8 Retrocalcaneal (deep Achilles) bursa", "content": [{"t": "figures", "items": [{"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image25", "caption": "Retrocalcaneal (deep Achilles) bursa"}, {"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image26", "caption": "Achilles Tendon – Chronic Tendinitis"}]}, {"t": "landmarks", "rows": [{"label": "Differentiate first", "item": {"text": "Bursal pain lies anterior to Achilles and may be compressed by passive plantarflexion.", "sub": ["Achilles tendinopathy is centred in the tendon/insertion and provoked by loading."]}}, {"label": "Approach", "item": {"text": "Historical material describes a lateral approach into the bursa anterior to the Achilles, chosen to avoid the posteromedial neurovascular bundle."}}, {"label": "Critical safety", "item": {"text": "Do not penetrate or inject corticosteroid into Achilles tendon.", "sub": ["Ultrasound is preferable if injecting near the tendon because it confirms bursal distension and needle position."]}}]}, {"t": "callout", "kind": "info", "title": "Achilles tendon", "body": "The supplied sources repeatedly warn against intratendinous corticosteroid injection because of rupture risk. Contemporary practice should treat Achilles tendinopathy primarily with load management and rehabilitation; any peritendinous/bursal intervention should be carefully selected and preferably image-guided."}]}, {"sub": "4.9 Morton neuroma / intermetatarsal bursa", "content": [{"t": "figures", "items": [{"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image27", "caption": ""}]}, {"t": "landmarks", "rows": [{"label": "Examination", "item": {"text": "Burning forefoot pain/paraesthesia, often worse in narrow footwear.", "sub": ["Focal interspace tenderness.", "Squeeze/Mulder manoeuvre may reproduce symptoms."]}}, {"label": "Approach", "item": {"text": "Dorsal approaches avoid the plantar weight-bearing skin.", "sub": ["The needle is directed into the symptomatic intermetatarsal space, with care to distinguish bursa from interdigital nerve."]}}, {"label": "Ultrasound", "item": {"text": "Useful to confirm neuroma vs intermetatarsal bursitis and to place injectate around rather than within the nerve."}}]}]}, {"sub": "4.10 Ligament injections - use caution", "content": [{"t": "p", "text": "The historical Saunders material describes corticosteroid peppering at chronic ATFL and deltoid ligament attachments. This should not be treated as routine contemporary first-line care: acute sprains are rehabilitation problems, and persistent pain should trigger reassessment for instability, osteochondral injury, occult fracture, tendon pathology or impingement. If an intervention is considered, define the pathology and use local specialist policy.", "strong": false}]}], "id": "4-landmark-guided-and-image-guided-approaches"}, {"title": "5. Aspiration: diagnostic opportunities", "video": false, "parts": [{"sub": null, "content": [{"t": "p", "text": "Aspirate before injecting when a clinically significant effusion is present and diagnosis is uncertain.", "strong": false}, {"t": "p", "lead": "For suspected crystal arthritis", "text": "send synovial fluid for crystal analysis; infection can coexist with crystals."}, {"t": "p", "lead": "For suspected infection", "text": "urgent synovial white cell/differential, Gram stain/culture according to local microbiology pathway; do not delay definitive care for a steroid injection."}, {"t": "p", "text": "Blood-stained aspirate after trauma may suggest intra-articular injury; interpret with the clinical/imaging context.", "strong": false}, {"t": "p", "text": "Document appearance/volume and whether aspiration altered pain or range of motion.", "strong": false}]}], "id": "5-aspiration-diagnostic-opportunities"}, {"title": "6. Complications, counselling and aftercare", "video": false, "parts": [{"sub": null, "content": [{"t": "table", "header": ["Element", "Practical guide"], "rows": [["Common/expected", "Needle pain, transient post-injection flare, bruising, temporary local anaesthetic numbness/weakness, temporary symptom recurrence."], ["Local steroid effects", "Skin atrophy, subcutaneous/fat-pad atrophy, depigmentation, local alopecia; risk is particularly relevant at superficial foot targets."], ["Serious but uncommon", "Infection/septic arthritis, neurovascular injury, significant bleeding/haemarthrosis, allergic reaction."], ["Tendon/fascia", "Tendon weakening/rupture with intratendinous steroid exposure; plantar fascia rupture is a recognised concern after heel injection."], ["Systemic steroid effects", "Transient flushing and hyperglycaemia; counsel people with diabetes to monitor glucose closely for the first 1-3 days after intra-articular glucocorticoid."], ["Aftercare", "Relative rest / avoid overuse for about 24 hours after joint injection, then progressive return according to symptoms and underlying rehabilitation plan. Do not prescribe routine immobilisation solely because of an injection."], ["Safety net", "Urgent review for escalating pain, marked swelling/redness, fever/systemic illness, new neurovascular deficit, or symptoms that are severe or persist beyond the expected post-injection flare window."]]}]}], "id": "6-complications-counselling-and-aftercare"}, {"title": "7. Documentation template", "video": false, "parts": [{"sub": null, "content": [{"t": "p", "text": "Indication and working diagnosis; side and exact anatomical target.", "strong": false}, {"t": "p", "text": "Relevant examination findings and imaging reviewed.", "strong": false}, {"t": "p", "lead": "Contraindication screen", "text": "infection, allergy, bleeding risk/antithrombotics, diabetes, pregnancy, planned surgery, relevant comorbidity."}, {"t": "p", "lead": "Consent", "text": "benefits, alternatives, material risks and aftercare discussed."}, {"t": "p", "text": "Aseptic preparation and whether landmark, ultrasound or fluoroscopic guidance was used.", "strong": false}, {"t": "p", "lead": "Aspiration", "text": "volume/appearance and samples sent."}, {"t": "p", "lead": "Injectate", "text": "exact drug, concentration, dose/volume, local anaesthetic, batch/expiry where required by policy."}, {"t": "p", "text": "Needle route, tolerance, immediate response and complications.", "strong": false}, {"t": "p", "text": "Post-procedure advice and follow-up / safety-net instructions.", "strong": false}]}], "id": "7-documentation-template"}, {"title": "Appendix A. Visual atlas from the supplied documents", "video": false, "parts": [{"sub": null, "content": [{"t": "figures", "items": [{"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image28", "caption": "Injection of the deltoid ligament"}, {"src": "Foot_and_Ankle_Examination_and_Injection_Guide__image29", "caption": "Lateral ligament complex injection"}]}, {"t": "p", "text": "Selected original teaching images are reproduced here at larger scale for rapid procedural review. Their inclusion does not convert historical techniques into current protocols.", "strong": false}]}], "id": "appendix-a-visual-atlas-from-the-supplied-docume"}]}, {"id": "video", "label": "Video", "videos": [{"id": "tibiotalar-ankle-joint", "file": "Ankle_-_Tibiotalar_Joint_injection_Video", "title": "Tibiotalar (ankle) joint", "blurb": "Anteromedial approach into the ankle joint, adjacent to tibialis anterior."}]}]}];
@@ -248,4 +251,364 @@ function block(b) {
       return `<div class="lmset">${b.rows.map(r => `
         <div class="lmrow">
           <div class="lmlabel">${esc(r.label)}</div>
- 
+          <ul class="bullets"><li>${esc(r.item.text)}${r.item.sub ? `<ul>${r.item.sub.map(s =>
+            `<li>${esc(s)}</li>`).join('')}</ul>` : ''}</li></ul>
+        </div>`).join('')}</div>`;
+    case 'table': return tableBlock(b);
+    case 'callout':
+      return `<div class="callout ${b.kind}">${b.title ? `<span class="ct">${esc(b.title)}</span>` : ''}${esc(b.body)}</div>`;
+    case 'figures': return figures(b.items);
+    default: return '';
+  }
+}
+
+function videoCard(v) {
+  return `<section class="section vidsec" id="s-${v.id}">
+      <h2>${esc(v.title)}</h2>
+      <div class="sec-rule"></div>
+      <div class="vidwrap">
+        <video controls preload="none" playsinline poster="${IMG['poster__' + v.file] || ''}"
+          onerror="this.closest('.vidwrap').classList.add('missing')">
+          <source src="videos/${v.file}.mp4" type="video/mp4">
+        </video>
+        <p class="vidmiss">This clip could not be loaded. Check that the <code>videos</code> folder
+          sits alongside <code>index.html</code> and that <code>${v.file}.mp4</code> is inside it.</p>
+      </div>
+      ${v.blurb ? `<p class="vidblurb">${esc(v.blurb)}</p>` : ''}
+    </section>`;
+}
+
+function renderRegion(rid, tabId) {
+  const r = REG[rid];
+  const tab = r.tabs.find(t => t.id === tabId) || r.tabs[0];
+  const c = TABCOLOR[tab.id];
+  document.documentElement.style.setProperty('--accent', `var(--${c})`);
+  document.documentElement.style.setProperty('--accent-soft', `var(--${c}-soft)`);
+  $('#backBtn').hidden = false;
+  figGroups = [];
+
+  const body = tab.videos ? tab.videos.map(videoCard).join('') : tab.sections.map(s => `
+    <section class="section" id="s-${s.id}">
+      <h2>${esc(s.title)}${s.video ? (r.tabs.some(t => t.id === 'video')
+        ? `<button class="videotag link" data-tabgo="${rid}/video">
+             <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l11 7-11 7z"/></svg>watch video</button>`
+        : '') : ''}</h2>
+      <div class="sec-rule"></div>
+      ${s.parts.map((p, pi) => `${p.sub ? `<h3 class="sub" id="p-${s.id}-${pi}">${esc(p.sub)}</h3>` : ''}
+        ${p.content.map(block).join('')}`).join('')}
+    </section>`).join('');
+
+  view.innerHTML = `
+    <div class="regionhead">
+      <div class="regionhead-in">
+        <span class="eyebrow">Region</span>
+        <h1>${esc(r.name)}</h1>
+        <p>${esc(r.tagline)}</p>
+        <div class="tabs" role="tablist">
+          ${r.tabs.map(t => `<button class="tab" role="tab" data-tab="${t.id}"
+            aria-selected="${t.id === tab.id}">${t.label}</button>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="layout">
+        <nav class="sidenav" aria-label="Sections">
+          <span class="eyebrow">On this page</span>
+          ${(tab.videos || tab.sections).map((s, i) => tab.videos
+            ? `<a href="#s-${s.id}" class="${i === 0 ? 'on' : ''}">${esc(s.title)}</a>`
+            : `<a href="#s-${s.id}" class="${i === 0 ? 'on' : ''}">${esc(s.title)}</a>` +
+            s.parts.map((p, pi) => p.sub ? `<a href="#p-${s.id}-${pi}" class="subl">${esc(p.sub)}</a>` : '').join('')).join('')}
+        </nav>
+        <div>${body}</div>
+      </div>
+    </div>`;
+
+  view.querySelectorAll('.tab').forEach(b => b.onclick = () => go(`#/${rid}/${b.dataset.tab}`));
+  view.querySelectorAll('.sidenav a').forEach(a => a.onclick = e => {
+    e.preventDefault();
+    const t = $(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+  });
+  spy();
+  window.scrollTo(0, 0);
+}
+
+/* scroll-spy for the section nav */
+let obs;
+function spy() {
+  if (obs) obs.disconnect();
+  const links = [...view.querySelectorAll('.sidenav a')];
+  if (!links.length) return;
+  obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      links.forEach(l => l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id));
+    });
+  }, { rootMargin: '-90px 0px -70% 0px', threshold: 0 });
+  view.querySelectorAll('.section').forEach(s => obs.observe(s));
+}
+
+/* -------------------------------------------------------------- lightbox */
+let lbGroup = [], lbIdx = 0;
+function openLb(g, i) {
+  lbGroup = figGroups[g] || []; lbIdx = i; paintLb();
+  $('#lightbox').classList.add('open'); $('#lbClose').focus();
+}
+function paintLb() {
+  const f = lbGroup[lbIdx]; if (!f) return;
+  $('#lbImg').src = IMG[f.src] || '';
+  $('#lbCap').textContent = f.caption || '';
+  $('#lbCount').textContent = lbGroup.length > 1 ? `${lbIdx + 1} / ${lbGroup.length}` : '';
+  const many = lbGroup.length > 1;
+  $('#lbPrev').style.display = many ? '' : 'none';
+  $('#lbNext').style.display = many ? '' : 'none';
+}
+const closeLb = () => $('#lightbox').classList.remove('open');
+const stepLb = d => { lbIdx = (lbIdx + d + lbGroup.length) % lbGroup.length; paintLb(); };
+$('#lbClose').onclick = closeLb;
+$('#lbPrev').onclick = () => stepLb(-1);
+$('#lbNext').onclick = () => stepLb(1);
+$('#lightbox').onclick = e => { if (e.target.id === 'lightbox') closeLb(); };
+
+/* ---------------------------------------------------------------- search */
+const INDEX = [];
+(function buildIndex() {
+  DATA.forEach(r => r.tabs.forEach(t => {
+    if (t.videos) {
+      t.videos.forEach(v => INDEX.push({ rid: r.id, region: r.name, tab: t.id, tabLabel: t.label,
+        sid: v.id, title: v.title, text: (v.blurb || '') + ' video demonstration technique' }));
+      return;
+    }
+    t.sections.forEach(s => {
+    const bits = [];
+    s.parts.forEach(p => {
+      if (p.sub) bits.push(p.sub);
+      p.content.forEach(function walk(b) {
+        if (b.t === 'p') bits.push((b.lead ? b.lead + '. ' : '') + b.text);
+        if (b.t === 'list' || b.t === 'steps') b.items.forEach(i => bits.push(i.text + (i.sub ? ' ' + i.sub.join(' ') : '')));
+        if (b.t === 'callout') bits.push((b.title ? b.title + '. ' : '') + b.body);
+        if (b.t === 'table') { if (b.header) bits.push(b.header.join(' ')); b.rows.forEach(row => bits.push(row.join(' — '))); }
+        if (b.t === 'figures') b.items.forEach(f => f.caption && bits.push(f.caption));
+        if (b.t === 'landmarks') b.rows.forEach(r => bits.push(r.label + ' ' + r.item.text + ' ' + (r.item.sub || []).join(' ')));
+      });
+    });
+    INDEX.push({ rid: r.id, region: r.name, tab: t.id, tabLabel: t.label, sid: s.id, title: s.title, text: bits.join('  ') });
+    });
+  }));
+})();
+
+function search(q) {
+  const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
+  if (!terms.length) return [];
+  return INDEX.map(e => {
+    const hay = (e.title + ' ' + e.region + ' ' + e.text).toLowerCase();
+    let score = 0, pos = -1;
+    for (const t of terms) {
+      const iT = e.title.toLowerCase().indexOf(t);
+      const iB = hay.indexOf(t);
+      if (iB < 0) return null;
+      score += iT >= 0 ? 12 : 3;
+      if (pos < 0) pos = e.text.toLowerCase().indexOf(t);
+    }
+    return { ...e, score, pos };
+  }).filter(Boolean).sort((a, b) => b.score - a.score).slice(0, 24);
+}
+
+function snippet(e, q) {
+  if (e.pos < 0) return '';
+  const s = Math.max(0, e.pos - 45);
+  let txt = e.text.slice(s, s + 165).trim();
+  const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
+  txt = esc((s > 0 ? '…' : '') + txt + '…');
+  terms.forEach(t => {
+    txt = txt.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark>$1</mark>');
+  });
+  return txt;
+}
+
+const sheet = $('#sheet'), qInput = $('#q'), results = $('#results');
+function openSearch() { sheet.classList.add('open'); qInput.value = ''; results.innerHTML = ''; qInput.focus(); paintResults(); }
+function closeSearch() { sheet.classList.remove('open'); }
+function paintResults() {
+  const q = qInput.value.trim();
+  if (!q) {
+    results.innerHTML = `<div class="empty">Try a structure, a test or a technique —
+      <em>trochanteric</em>, <em>Lachman</em>, <em>carpal tunnel</em>, <em>subacromial</em>, <em>Depo-Medrone</em>.</div>`;
+    return;
+  }
+  const res = search(q);
+  results.innerHTML = res.length ? res.map((e, i) => `
+    <button class="result ${i === 0 ? 'on' : ''}" data-r="${e.rid}" data-t="${e.tab}" data-s="${e.sid}">
+      <div class="rm">${esc(e.region)} · ${esc(e.tabLabel)}</div>
+      <div class="rt">${esc(e.title)}</div>
+      <div class="rs">${snippet(e, q)}</div>
+    </button>`).join('') : `<div class="empty">Nothing found for “${esc(q)}”.</div>`;
+}
+qInput.oninput = paintResults;
+$('#searchBtn').onclick = openSearch;
+sheet.onclick = e => { if (e.target === sheet) closeSearch(); };
+results.onclick = e => {
+  const b = e.target.closest('.result'); if (!b) return;
+  closeSearch();
+  go(`#/${b.dataset.r}/${b.dataset.t}`, b.dataset.s);
+};
+qInput.onkeydown = e => {
+  const items = [...results.querySelectorAll('.result')];
+  const cur = items.findIndex(i => i.classList.contains('on'));
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    if (!items.length) return;
+    const nxt = (cur + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+    items.forEach(i => i.classList.remove('on'));
+    items[nxt].classList.add('on'); items[nxt].scrollIntoView({ block: 'nearest' });
+  }
+  if (e.key === 'Enter' && items[Math.max(cur, 0)]) items[Math.max(cur, 0)].click();
+};
+
+
+/* ---------------------------------------------------------------- settings */
+function paintSettings() {
+  $('#setBody').innerHTML = `
+    <div class="setgroup">
+      <span class="eyebrow">Body diagram</span>
+      <div class="figchoice">
+        ${Object.entries(FIGURES).map(([k, f]) => `
+          <button class="figopt ${CFG.figure === k ? 'on' : ''}" data-figure="${k}"
+            aria-pressed="${CFG.figure === k}">
+            <span class="figprev">${k === 'silhouette'
+              ? `<svg viewBox="150 0 160 452" fill="#B9CCCE" stroke="#B9CCCE" stroke-linecap="round">${FIGURE_SVG}</svg>`
+              : `<img src="${IMG.__body}" alt="">`}</span>
+            <span class="figname">${f.label}</span>
+          </button>`).join('')}
+      </div>
+      <p class="sethint">Both diagrams are fully clickable — select a body part or its label.</p>
+    </div>
+    <div class="setgroup">
+      <span class="eyebrow">Background</span>
+      <div class="swatches">
+        ${BG_PRESETS.map(p => `
+          <button class="swatch ${CFG.bg.toLowerCase() === p.bg.toLowerCase() ? 'on' : ''}"
+            data-bg="${p.bg}" title="${p.name}" aria-label="${p.name}">
+            <span style="background:${p.bg}"></span>
+          </button>`).join('')}
+      </div>
+      <label class="custom">
+        <input type="color" id="bgCustom" value="${CFG.bg}">
+        <span>Custom colour</span>
+        <code>${esc(CFG.bg.toUpperCase())}</code>
+      </label>
+    </div>
+    ${installRow()}
+    <div class="setgroup">
+      <button class="resetbtn" id="resetCfg">Reset to defaults</button>
+    </div>`;
+
+  $('#setBody').querySelectorAll('[data-figure]').forEach(b => b.onclick = () => {
+    CFG.figure = b.dataset.figure; applyCfg(); paintSettings(); refreshHome();
+  });
+  $('#setBody').querySelectorAll('[data-bg]').forEach(b => b.onclick = () => {
+    CFG.bg = b.dataset.bg; applyCfg(); paintSettings();
+  });
+  $('#bgCustom').oninput = e => { CFG.bg = e.target.value; applyCfg(); $('#setBody').querySelector('.custom code').textContent = CFG.bg.toUpperCase(); $('#setBody').querySelectorAll('.swatch').forEach(s => s.classList.toggle('on', s.dataset.bg.toLowerCase() === CFG.bg.toLowerCase())); };
+  const ib = $('#installBtn');
+  if (ib) ib.onclick = async () => {
+    if (!deferredInstall) return;
+    deferredInstall.prompt();
+    await deferredInstall.userChoice;
+    deferredInstall = null;
+    paintSettings();
+  };
+  $('#resetCfg').onclick = () => { CFG = { ...DEFAULTS }; applyCfg(); paintSettings(); refreshHome(); };
+}
+
+function refreshHome() {
+  if (!/^#\/[\w-]+/.test(location.hash || '')) renderHome();
+}
+
+const setSheet = $('#settings');
+function openSettings() { paintSettings(); setSheet.classList.add('open'); $('#setClose').focus(); }
+function closeSettings() { setSheet.classList.remove('open'); }
+$('#setBtn').onclick = openSettings;
+$('#setClose').onclick = closeSettings;
+setSheet.onclick = e => { if (e.target === setSheet) closeSettings(); };
+
+/* ------------------------------------------------------------------ router */
+function go(hash, scrollTo) {
+  pendingScroll = scrollTo || null;
+  if (location.hash === hash) route(); else location.hash = hash;
+}
+let pendingScroll = null;
+
+function route() {
+  const m = (location.hash || '').match(/^#\/([\w-]+)(?:\/([\w-]+))?/);
+  if (m && REG[m[1]]) renderRegion(m[1], m[2] || 'exam'); else renderHome();
+  if (pendingScroll) {
+    const t = $('#s-' + pendingScroll);
+    if (t) t.scrollIntoView({ block: 'start' });
+    pendingScroll = null;
+  }
+}
+addEventListener('hashchange', route);
+
+document.addEventListener('click', e => {
+  const tg = e.target.closest('[data-tabgo]');
+  if (tg) { go('#/' + tg.dataset.tabgo); return; }
+  const g = e.target.closest('[data-go]');
+  if (g) { go('#/' + g.dataset.go + '/exam'); return; }
+  const f = e.target.closest('.figbtn[data-fig]');
+  if (f) openLb(+f.dataset.fig, +f.dataset.i);
+});
+document.addEventListener('keydown', e => {
+  const hot = e.target.closest && e.target.closest('.hot');
+  if (hot && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); go('#/' + hot.dataset.go + '/exam'); return; }
+  if (e.key === 'Escape') { closeLb(); closeSearch(); closeSettings(); }
+  if ($('#lightbox').classList.contains('open')) {
+    if (e.key === 'ArrowLeft') stepLb(-1);
+    if (e.key === 'ArrowRight') stepLb(1);
+  }
+  if ((e.key === '/' || (e.key === 'k' && (e.metaKey || e.ctrlKey))) &&
+      !/input|textarea/i.test(document.activeElement.tagName)) { e.preventDefault(); openSearch(); }
+});
+$('#backBtn').onclick = () => go('#/');
+$('#brand').onclick = () => go('#/');
+$('#brand').style.cursor = 'pointer';
+
+/* --------------------------------------------------- installable app (PWA) */
+if ('serviceWorker' in navigator) {
+  addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
+
+let deferredInstall = null;
+addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredInstall = e; });
+
+function installRow() {
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  if (standalone) return '';
+  if (deferredInstall) {
+    return `<div class="setgroup"><span class="eyebrow">Install</span>
+      <button class="installbtn" id="installBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"/></svg>
+        Install on this device</button>
+      <p class="sethint">Adds the guide to your home screen and keeps it available offline.</p></div>`;
+  }
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  return `<div class="setgroup"><span class="eyebrow">Install</span>
+    <p class="sethint" style="margin-top:0">${ios
+      ? 'Tap the Share button in Safari, then “Add to Home Screen”, to use this as an app offline.'
+      : 'Use your browser menu and choose “Install app” or “Add to Home screen” to keep this on your device.'}</p></div>`;
+}
+
+applyCfg();
+route();
+
+</script>
+<script src="ui-landmark.js?v=33"></script>
+<script src="trigger-fix-v16.js?v=33"></script>
+<script src="guide-integrated-v24.js?v=33"></script>
+<script src="region-layout-v26.js?v=33"></script>
+<script src="presentation-layout-v28.js?v=33"></script>
+<script src="numbering-v29.js?v=33"></script>
+<script src="personal-images-v30.js?v=33"></script>
+</body>
+</html>
