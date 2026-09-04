@@ -1,0 +1,27 @@
+name: Disable legacy Foot runtime
+on:
+  push:
+    paths:
+      - 'tools/disable-legacy-foot-runtime.py'
+      - '.github/workflows/disable-legacy-foot-runtime.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Patch ui-landmark.js
+        run: python tools/disable-legacy-foot-runtime.py
+      - name: Commit guard
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ui-landmark.js
+          git diff --cached --quiet || git commit -m 'Use source-built Foot and Ankle cards'
+          git push
