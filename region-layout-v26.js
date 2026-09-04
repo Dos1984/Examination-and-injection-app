@@ -1,16 +1,33 @@
-/* v26 — Standardise Injection > Landmark-guided techniques > procedure dropdowns. */
+/* v27 — Standardise regional Injection > Landmark-guided techniques > procedure dropdowns and numbering. */
 (() => {
   const route = () => location.hash.split('/')[1] || '';
   const isInjection = () => location.hash.split('/')[2] === 'injection';
-  const supported = new Set(['elbow','shoulder','hip','ankle','foot']);
+
+  const regionMeta = {
+    shoulder: {n:1, name:'Shoulder'},
+    elbow:    {n:2, name:'Elbow'},
+    hand:     {n:3, name:'Hand & Wrist'},
+    hip:      {n:4, name:'Hip'},
+    knee:     {n:5, name:'Knee'},
+    ankle:    {n:6, name:'Foot & Ankle'},
+    foot:     {n:6, name:'Foot & Ankle'}
+  };
 
   const patterns = {
     elbow: [/elbow joint/i,/olecranon/i,/lateral epicondyl|tennis elbow/i],
     shoulder: [/glenohumeral/i,/subacromial/i,/acromioclavicular|\bAC joint/i,/bicipital|biceps.*groove/i],
     hip: [/hip joint|intra.?articular hip/i,/trochanter|GTPS|greater trochanteric/i],
+    knee: [/knee joint|intra.?articular knee|patellofemoral|suprapatellar/i,/pes anser/i,/baker/i],
     ankle: [/ankle joint|tibiotalar/i,/subtalar|sinus tarsi/i,/posterior tibialis/i,/plantar fascia/i,/morton/i,/metatarsophalangeal|\bMTP\b/i],
     foot: [/ankle joint|tibiotalar/i,/subtalar|sinus tarsi/i,/posterior tibialis/i,/plantar fascia/i,/morton/i,/metatarsophalangeal|\bMTP\b/i]
   };
+
+  function cleanTitle(text) {
+    return String(text || '')
+      .replace(/^\s*(?:Q\s*)?\d+(?:\.\d+)*\s*[.)]?\s*[-–—:]?\s*/i, '')
+      .replace(/^\s*(?:procedure|approach)\s+\d+\s*[:.)-]?\s*/i, '')
+      .trim();
+  }
 
   function titleOf(section) {
     return (section.querySelector(':scope > .inj-collapse-toggle > span:first-child')?.textContent ||
@@ -28,7 +45,7 @@
   function makeCard(title, nodes, id) {
     const card = document.createElement('section');
     card.className = 'hand-inj-sub region-inj-sub collapsed';
-    card.dataset.regionProcedure = 'v26';
+    card.dataset.regionProcedure = 'v27';
     if (id) card.id = id;
 
     const subBody = document.createElement('div');
@@ -36,7 +53,7 @@
     nodes.forEach(n => subBody.appendChild(n));
 
     const firstImg = subBody.querySelector('.figs figure img, figure img');
-    const firstCaption = subBody.querySelector('.figs figure figcaption, figure figcaption')?.textContent?.trim() || `${title} injection approach`;
+    const firstCaption = subBody.querySelector('.figs figure figcaption, figure figcaption')?.textContent?.trim() || `${cleanTitle(title)} injection approach`;
 
     const toggle = document.createElement('button');
     toggle.type = 'button';
@@ -47,7 +64,7 @@
     text.className = 'hand-inj-sub-text';
     const label = document.createElement('span');
     label.className = 'hand-inj-sub-title';
-    label.textContent = title;
+    label.textContent = cleanTitle(title);
     const hint = document.createElement('span');
     hint.className = 'hand-inj-sub-hint';
     hint.textContent = 'Tap to view landmarks, approach & safety';
@@ -82,9 +99,9 @@
 
   function convertHeadings(outer, regs) {
     const body = bodyOf(outer);
-    const headings = [...body.querySelectorAll(':scope > h3.sub')].filter(h => matchesProcedure(h.textContent, regs));
+    const headings = [...body.querySelectorAll(':scope > h3.sub')].filter(h => matchesProcedure(cleanTitle(h.textContent), regs));
     headings.forEach(h => {
-      const title = h.textContent.trim();
+      const title = cleanTitle(h.textContent);
       const nodes = [];
       let n = h.nextElementSibling;
       while (n && !n.matches('h3.sub')) {
@@ -104,19 +121,19 @@
     const existing = all.find(s => /landmark[ -]guided injection techniques|landmark injections?/i.test(titleOf(s)));
     if (existing) return existing;
 
-    const procedureSections = all.filter(s => matchesProcedure(titleOf(s), regs));
+    const procedureSections = all.filter(s => matchesProcedure(cleanTitle(titleOf(s)), regs));
     if (procedureSections.length < 2) return null;
 
     const outer = document.createElement('section');
     outer.className = 'section region-landmark-section';
-    outer.dataset.regionLandmark = 'v26';
+    outer.dataset.regionLandmark = 'v27';
     const h2 = document.createElement('h2');
     h2.textContent = 'Landmark-guided injection techniques';
     outer.appendChild(h2);
     procedureSections[0].before(outer);
 
     procedureSections.forEach(sec => {
-      const title = titleOf(sec);
+      const title = cleanTitle(titleOf(sec));
       const srcBody = bodyOf(sec);
       const nodes = [...srcBody.children];
       const card = makeCard(title, nodes, sec.id);
@@ -126,32 +143,84 @@
     return outer;
   }
 
+  function addRegionNumber(meta) {
+    const head = document.querySelector('.regionhead .regionhead-in');
+    if (!head) return;
+    let badge = head.querySelector('.standard-region-number');
+    if (!badge) {
+      badge = document.createElement('div');
+      badge.className = 'eyebrow standard-region-number';
+      const h1 = head.querySelector('h1');
+      if (h1) h1.before(badge); else head.prepend(badge);
+    }
+    badge.textContent = `Region ${meta.n}`;
+  }
+
+  function findLandmarkOuter() {
+    return [...document.querySelectorAll('#view .section')].find(s => {
+      const t = titleOf(s);
+      return /landmark[ -]guided injection techniques|landmark injections?/i.test(t);
+    }) || null;
+  }
+
+  function numberOuterAndCards(outer, meta) {
+    if (!outer) return;
+    const outerTitle = `${meta.n}. Landmark-guided injection techniques`;
+    const h2 = outer.querySelector(':scope > h2');
+    const btnLabel = outer.querySelector(':scope > .inj-collapse-toggle > span:first-child');
+    if (h2) h2.textContent = outerTitle;
+    if (btnLabel) btnLabel.textContent = outerTitle;
+
+    const body = bodyOf(outer);
+    const cards = [...body.querySelectorAll(':scope > .hand-inj-sub')];
+    cards.forEach((card, i) => {
+      const label = card.querySelector(':scope > .hand-inj-sub-toggle .hand-inj-sub-title');
+      if (!label) return;
+      const base = cleanTitle(label.textContent);
+      label.textContent = `${meta.n}.${i + 1} ${base}`;
+      card.dataset.standardNumber = `${meta.n}.${i + 1}`;
+    });
+  }
+
+  function renumberHand(meta) {
+    const outer = findLandmarkOuter();
+    if (!outer) return;
+    numberOuterAndCards(outer, meta);
+  }
+
   function ensure() {
     if (!isInjection()) return;
     const r = route();
-    if (!supported.has(r)) return;
+    const meta = regionMeta[r];
+    if (!meta) return;
     const view = document.querySelector('#view');
-    if (!view || view.dataset.regionLayoutV26 === r) return;
+    if (!view) return;
+
+    addRegionNumber(meta);
+
+    if (r === 'hand') {
+      renumberHand(meta);
+      view.dataset.regionLayoutV27 = r;
+      return;
+    }
+
     const regs = patterns[r];
+    if (!regs) return;
 
     let outer = groupTopLevelSections(regs);
     if (!outer) {
       const sections = [...view.querySelectorAll('.section')];
-      outer = sections
-        .map(s => ({s, score:[...bodyOf(s).querySelectorAll(':scope > h3.sub')].filter(h => matchesProcedure(h.textContent, regs)).length}))
+      const candidate = sections
+        .map(s => ({s, score:[...bodyOf(s).querySelectorAll(':scope > h3.sub')].filter(h => matchesProcedure(cleanTitle(h.textContent), regs)).length}))
         .sort((a,b) => b.score-a.score)[0];
-      outer = outer?.score >= 2 ? outer.s : null;
+      outer = candidate?.score >= 2 ? candidate.s : null;
     }
     if (!outer) return;
 
-    const h2 = outer.querySelector(':scope > h2');
-    const btnLabel = outer.querySelector(':scope > .inj-collapse-toggle > span:first-child');
-    if (h2) h2.textContent = 'Landmark-guided injection techniques';
-    if (btnLabel) btnLabel.textContent = 'Landmark-guided injection techniques';
-
     convertHeadings(outer, regs);
-    outer.dataset.regionLandmark = 'v26';
-    view.dataset.regionLayoutV26 = r;
+    outer.dataset.regionLandmark = 'v27';
+    numberOuterAndCards(outer, meta);
+    view.dataset.regionLayoutV27 = r;
   }
 
   let queued = false;
@@ -160,11 +229,9 @@
     queued = true;
     requestAnimationFrame(() => { queued = false; ensure(); });
   };
+
   new MutationObserver(schedule).observe(document.documentElement, {childList:true, subtree:true});
-  addEventListener('hashchange', () => {
-    document.querySelector('#view')?.removeAttribute('data-region-layout-v26');
-    schedule();
-  });
+  addEventListener('hashchange', schedule);
   addEventListener('DOMContentLoaded', schedule);
   schedule();
 })();
