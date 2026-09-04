@@ -8,17 +8,12 @@
 
   function moveInjectionImagesFirst() {
     if (!isInjection()) return;
-    document.querySelectorAll('#view .hand-inj-sub-body').forEach(body => {
-      if (body.dataset.imageFirstV28 === '1') return;
+    document.querySelectorAll('#view .hand-inj-sub-body, #view .inj-collapse-body').forEach(body => {
       const visualBlocks = [...body.children].filter(el => el.matches('.figs, figure'));
-      if (!visualBlocks.length) {
-        body.dataset.imageFirstV28 = '1';
-        return;
-      }
+      if (!visualBlocks.length) return;
       const frag = document.createDocumentFragment();
       visualBlocks.forEach(el => frag.appendChild(el));
       body.prepend(frag);
-      body.dataset.imageFirstV28 = '1';
     });
   }
 
