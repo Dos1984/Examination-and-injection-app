@@ -139,6 +139,58 @@
     });
   }
 
+  function buildInjectionSubcard(title, nodes, originalId) {
+    const card = document.createElement('section');
+    card.className = 'hand-inj-sub collapsed';
+    if (originalId) card.id = originalId;
+
+    const subBody = document.createElement('div');
+    subBody.className = 'hand-inj-sub-body';
+    nodes.forEach(node => subBody.appendChild(node));
+
+    const firstImg = subBody.querySelector('.figs figure img, figure img, img');
+    const firstCaption = subBody.querySelector('.figs figure figcaption, figure figcaption')?.textContent?.trim() || `${title} injection approach`;
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'hand-inj-sub-toggle';
+    toggle.setAttribute('aria-expanded', 'false');
+
+    const label = document.createElement('span');
+    label.className = 'hand-inj-sub-title';
+    label.textContent = title;
+    const hint = document.createElement('span');
+    hint.className = 'hand-inj-sub-hint';
+    hint.textContent = 'Tap to view landmarks, approach & safety';
+    const text = document.createElement('span');
+    text.className = 'hand-inj-sub-text';
+    text.append(label, hint);
+
+    const thumb = document.createElement('span');
+    thumb.className = 'hand-inj-thumb';
+    if (firstImg?.src) {
+      const img = document.createElement('img');
+      img.src = firstImg.src;
+      img.alt = firstCaption;
+      img.loading = 'lazy';
+      thumb.appendChild(img);
+    } else {
+      thumb.classList.add('no-image');
+      thumb.setAttribute('aria-hidden', 'true');
+    }
+
+    const chev = document.createElement('span');
+    chev.className = 'hand-inj-sub-chevron';
+    chev.setAttribute('aria-hidden', 'true');
+    chev.textContent = '⌄';
+    toggle.append(text, thumb, chev);
+    card.append(toggle, subBody);
+    toggle.addEventListener('click', () => {
+      const closed = card.classList.toggle('collapsed');
+      toggle.setAttribute('aria-expanded', String(!closed));
+    });
+    return card;
+  }
+
   function makeHandSubsectionsCollapsible() {
     if (!isHandInjection()) return;
     const section = [...document.querySelectorAll('#view .section')].find(s => {
@@ -160,50 +212,96 @@
         nodes.push(n);
         n = n.nextElementSibling;
       }
-      const card = document.createElement('section');
-      card.className = 'hand-inj-sub collapsed';
-      if (originalId) card.id = originalId;
-      const subBody = document.createElement('div');
-      subBody.className = 'hand-inj-sub-body';
-      nodes.forEach(node => subBody.appendChild(node));
-      const firstImg = subBody.querySelector('.figs figure img');
-      const firstCaption = subBody.querySelector('.figs figure figcaption')?.textContent?.trim() || `${title} injection approach`;
-      const toggle = document.createElement('button');
-      toggle.type = 'button';
-      toggle.className = 'hand-inj-sub-toggle';
-      toggle.setAttribute('aria-expanded', 'false');
-      const label = document.createElement('span');
-      label.className = 'hand-inj-sub-title';
-      label.textContent = title;
-      const hint = document.createElement('span');
-      hint.className = 'hand-inj-sub-hint';
-      hint.textContent = 'Tap to view landmarks, approach & safety';
-      const text = document.createElement('span');
-      text.className = 'hand-inj-sub-text';
-      text.append(label, hint);
-      const thumb = document.createElement('span');
-      thumb.className = 'hand-inj-thumb';
-      if (firstImg?.src) {
-        const img = document.createElement('img');
-        img.src = firstImg.src;
-        img.alt = firstCaption;
-        img.loading = 'lazy';
-        thumb.appendChild(img);
-      } else {
-        thumb.classList.add('no-image');
-        thumb.setAttribute('aria-hidden', 'true');
+      h.replaceWith(buildInjectionSubcard(title, nodes, originalId));
+    });
+  }
+
+  const footProcedureRe = /^\s*4\.(\d+)\s+(?:Tibiotalar|Subtalar|Midtarsal|Metatarsophalangeal|MTP|Plantar fascia|Posterior tibial|Peroneal tendon|Retrocalcaneal|Morton neuroma)/i;
+  const normaliseText = el => String(el?.textContent || '').replace(/\s+/g, ' ').trim();
+
+  function smallestFootMarkers(root) {
+    return [...root.querySelectorAll('*')].filter(el => {
+      const text = normaliseText(el);
+      if (!footProcedureRe.test(text)) return false;
+      return ![...el.children].some(child => footProcedureRe.test(normaliseText(child)));
+    }).sort((a,b) => {
+      const na = +(normaliseText(a).match(footProcedureRe)?.[1] || 99);
+      const nb = +(normaliseText(b).match(footProcedureRe)?.[1] || 99);
+      return na - nb;
+    });
+  }
+
+  function lowestCommonContainer(markers, limit) {
+    if (!markers.length) return null;
+    let node = markers[0].parentElement;
+    while (node && node !== limit.parentElement) {
+      if (markers.every(m => node.contains(m))) return node;
+      node = node.parentElement;
+    }
+    return null;
+  }
+
+  function directChildUnder(container, node) {
+    let cur = node;
+    while (cur && cur.parentElement !== container) cur = cur.parentElement;
+    return cur && cur.parentElement === container ? cur : null;
+  }
+
+  function makeFootAnkleSubsectionsCollapsible() {
+    if (!isInjectionTab()) return;
+    const view = document.querySelector('#view');
+    if (!view) return;
+
+    const candidateSections = [...view.querySelectorAll('.section')];
+    let section = null;
+    let markers = [];
+    for (const s of candidateSections) {
+      if (s.dataset.footAnkleSubsections === '1') return;
+      const found = smallestFootMarkers(s);
+      if (found.length >= 6) { section = s; markers = found; break; }
+    }
+    if (!section || markers.length < 6) return;
+
+    const body = section.querySelector(':scope > .inj-collapse-body') || section;
+    markers = smallestFootMarkers(body);
+    if (markers.length < 6) return;
+
+    const container = lowestCommonContainer(markers, body);
+    if (!container) return;
+
+    const boundaries = markers.map(marker => ({ marker, block: directChildUnder(container, marker) }))
+      .filter(x => x.block);
+    const uniqueBlocks = new Set(boundaries.map(x => x.block));
+    if (boundaries.length < 6 || uniqueBlocks.size < 6) return;
+
+    section.dataset.footAnkleSubsections = '1';
+    const boundarySet = new Set(boundaries.map(x => x.block));
+
+    boundaries.forEach(({marker, block}, index) => {
+      if (!block.isConnected) return;
+      const title = normaliseText(marker);
+      const originalId = marker.id || block.id || '';
+      const nodes = [];
+      let n = block;
+      const nextBoundary = boundaries[index + 1]?.block || null;
+      while (n && n !== nextBoundary) {
+        const next = n.nextElementSibling;
+        nodes.push(n);
+        n = next;
+        if (n && boundarySet.has(n) && n !== nextBoundary) break;
       }
-      const chev = document.createElement('span');
-      chev.className = 'hand-inj-sub-chevron';
-      chev.setAttribute('aria-hidden', 'true');
-      chev.textContent = '⌄';
-      toggle.append(text, thumb, chev);
-      card.append(toggle, subBody);
-      h.replaceWith(card);
-      toggle.addEventListener('click', () => {
-        const closed = card.classList.toggle('collapsed');
-        toggle.setAttribute('aria-expanded', String(!closed));
-      });
+
+      const card = buildInjectionSubcard(title, nodes, originalId);
+      block.before(card);
+      if (marker.isConnected) marker.remove();
+    });
+
+    /* A final pass removes any empty source wrappers left after moving the procedure blocks. */
+    [...container.children].forEach(el => {
+      if (el.classList?.contains('hand-inj-sub')) return;
+      const text = normaliseText(el);
+      const hasMedia = !!el.querySelector?.('img,video,figure');
+      if (!text && !hasMedia) el.remove();
     });
   }
 
@@ -215,6 +313,7 @@
     stripUltrasoundContent();
     makeCollapsible();
     makeHandSubsectionsCollapsible();
+    makeFootAnkleSubsectionsCollapsible();
   }
 
   document.addEventListener('click', e => {
@@ -261,7 +360,6 @@
       }
     }
 
-    if (!isHandInjection()) return;
     const link = e.target.closest?.('.sidenav a[href^="#p-"]');
     if (!link) return;
     const card = document.querySelector(link.getAttribute('href'));
