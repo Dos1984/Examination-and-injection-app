@@ -1,5 +1,5 @@
 /* MSK Examination & Injection Guide — offline service worker */
-const VERSION = 'msk-v30';
+const VERSION = 'msk-v31';
 const SHELL = `${VERSION}-shell`;
 const SHELL_FILES = [
   'manifest.webmanifest',
@@ -23,11 +23,27 @@ self.addEventListener('install', e => e.waitUntil(
   caches.open(SHELL).then(c => c.addAll(SHELL_FILES)).then(() => self.skipWaiting()).catch(() => self.skipWaiting())
 ));
 
-self.addEventListener('activate', e => e.waitUntil(
-  caches.keys()
-    .then(keys => Promise.all(keys.filter(k => !k.startsWith(VERSION)).map(k => caches.delete(k))))
-    .then(() => self.clients.claim())
-));
+self.addEventListener('activate', e => e.waitUntil((async () => {
+  const keys = await caches.keys();
+  await Promise.all(keys.filter(k => !k.startsWith(VERSION)).map(k => caches.delete(k)));
+  await self.clients.claim();
+
+  /* A first-ever visit is initially uncontrolled, and an already-open tab may
+     still contain markup produced by the previous worker. Reload each visible
+     app window once when a new worker version activates so the current worker
+     immediately supplies the current enhanced HTML. */
+  const windows = await self.clients.matchAll({type:'window', includeUncontrolled:true});
+  await Promise.all(windows.map(async client => {
+    try {
+      const u = new URL(client.url);
+      if (u.origin !== self.location.origin) return;
+      const marker = `sw-${VERSION}`;
+      if (u.searchParams.get('_appv') === marker) return;
+      u.searchParams.set('_appv', marker);
+      await client.navigate(u.href);
+    } catch (_) {}
+  }));
+})()));
 
 function enhanceHtml(html) {
   html = html.replace(
@@ -44,14 +60,31 @@ function enhanceHtml(html) {
     '"src": "Olecranon_Bursa_Replacement", "caption": "Olecranon bursa aspiration/injection approach."'
   );
 
-  if (!html.includes('ui-landmark.css')) html = html.replace('</head>', '<link rel="stylesheet" href="ui-landmark.css?v=30"></head>');
-  if (!html.includes('ui-landmark.js')) html = html.replace('</body>', '<script src="ui-landmark.js?v=30"></script></body>');
-  if (!html.includes('trigger-fix-v16.js')) html = html.replace('</body>', '<script src="trigger-fix-v16.js?v=30"></script></body>');
-  if (!html.includes('guide-integrated-v24.js')) html = html.replace('</body>', '<script src="guide-integrated-v24.js?v=30"></script></body>');
-  if (!html.includes('region-layout-v26.js')) html = html.replace('</body>', '<script src="region-layout-v26.js?v=30"></script></body>');
-  if (!html.includes('presentation-layout-v28.js')) html = html.replace('</body>', '<script src="presentation-layout-v28.js?v=30"></script></body>');
-  if (!html.includes('numbering-v29.js')) html = html.replace('</body>', '<script src="numbering-v29.js?v=30"></script></body>');
-  if (!html.includes('personal-images-v30.js')) html = html.replace('</body>', '<script src="personal-images-v30.js?v=30"></script></body>');
+  if (!html.includes('ui-landmark.css')) html = html.replace('</head>', '<link rel="stylesheet" href="ui-landmark.css?v=31"></head>');
+  if (!html.includes('ui-landmark.js')) html = html.replace('</body>', '<script src="ui-landmark.js?v=31"></script></body>');
+  if (!html.includes('trigger-fix-v16.js')) html = html.replace('</body>', '<script src="trigger-fix-v16.js?v=31"></script></body>');
+  if (!html.includes('guide-integrated-v24.js')) html = html.replace('</body>', '<script src="guide-integrated-v24.js?v=31"></script></body>');
+  if (!html.includes('region-layout-v26.js')) html = html.replace('</body>', '<script src="region-layout-v26.js?v=31"></script></body>');
+  if (!html.includes('presentation-layout-v28.js')) html = html.replace('</body>', '<script src="presentation-layout-v28.js?v=31"></script></body>');
+  if (!html.includes('numbering-v29.js')) html = html.replace('</body>', '<script src="numbering-v29.js?v=31"></script></body>');
+  if (!html.includes('personal-images-v30.js')) html = html.replace('</body>', '<script src="personal-images-v30.js?v=31"></script></body>');
+
+  /* Ask the browser to check sw.js against the network rather than an HTTP
+     cache. Existing controlled pages also reload when a newer controller takes
+     over, providing a second layer of protection against stale UI. */
+  if (!html.includes('data-msk-sw-updater')) html = html.replace('</body>', `<script data-msk-sw-updater>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(reg => {
+      reg.update().catch(() => {});
+      let reloading = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (reloading) return;
+        reloading = true;
+        location.reload();
+      });
+    }).catch(() => {});
+  }
+  </script></body>`);
   return html;
 }
 
@@ -63,11 +96,14 @@ self.addEventListener('fetch', e => {
   if (url.pathname.toLowerCase().endsWith('.mp4')) return;
 
   if (req.mode === 'navigate' || url.pathname.endsWith('/index.html') || url.pathname.endsWith('/Examination-and-injection-app/')) {
-    e.respondWith(fetch(req).then(async res => {
+    e.respondWith(fetch(req, {cache:'no-store'}).then(async res => {
       if (!res.ok) return res;
       const html = enhanceHtml(await res.text());
-      return new Response(html, {status:res.status,statusText:res.statusText,headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-cache'}});
-    }).catch(() => fetch(req)));
+      return new Response(html, {status:res.status,statusText:res.statusText,headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store, max-age=0'}});
+    }).catch(async () => {
+      const cached = await caches.match('index.html');
+      return cached || Response.error();
+    }));
     return;
   }
 
