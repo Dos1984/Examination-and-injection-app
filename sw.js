@@ -1,5 +1,5 @@
 /* MSK Examination & Injection Guide — offline service worker */
-const VERSION = 'msk-v31';
+const VERSION = 'msk-v32';
 const SHELL = `${VERSION}-shell`;
 const SHELL_FILES = [
   'manifest.webmanifest',
@@ -27,11 +27,6 @@ self.addEventListener('activate', e => e.waitUntil((async () => {
   const keys = await caches.keys();
   await Promise.all(keys.filter(k => !k.startsWith(VERSION)).map(k => caches.delete(k)));
   await self.clients.claim();
-
-  /* A first-ever visit is initially uncontrolled, and an already-open tab may
-     still contain markup produced by the previous worker. Reload each visible
-     app window once when a new worker version activates so the current worker
-     immediately supplies the current enhanced HTML. */
   const windows = await self.clients.matchAll({type:'window', includeUncontrolled:true});
   await Promise.all(windows.map(async client => {
     try {
@@ -50,7 +45,6 @@ function enhanceHtml(html) {
     "const DEFAULTS = { bg: '#EAEFEF', figure: 'silhouette' };",
     "const DEFAULTS = { bg: '#EAEFEF', figure: 'illustration' };"
   );
-
   html = html.replace(
     'const IMG = {',
     'const IMG = {"Olecranon_Bursa_Replacement":"images/olecranon-bursa-aspiration-injection.png.png",'
@@ -60,18 +54,15 @@ function enhanceHtml(html) {
     '"src": "Olecranon_Bursa_Replacement", "caption": "Olecranon bursa aspiration/injection approach."'
   );
 
-  if (!html.includes('ui-landmark.css')) html = html.replace('</head>', '<link rel="stylesheet" href="ui-landmark.css?v=31"></head>');
-  if (!html.includes('ui-landmark.js')) html = html.replace('</body>', '<script src="ui-landmark.js?v=31"></script></body>');
-  if (!html.includes('trigger-fix-v16.js')) html = html.replace('</body>', '<script src="trigger-fix-v16.js?v=31"></script></body>');
-  if (!html.includes('guide-integrated-v24.js')) html = html.replace('</body>', '<script src="guide-integrated-v24.js?v=31"></script></body>');
-  if (!html.includes('region-layout-v26.js')) html = html.replace('</body>', '<script src="region-layout-v26.js?v=31"></script></body>');
-  if (!html.includes('presentation-layout-v28.js')) html = html.replace('</body>', '<script src="presentation-layout-v28.js?v=31"></script></body>');
-  if (!html.includes('numbering-v29.js')) html = html.replace('</body>', '<script src="numbering-v29.js?v=31"></script></body>');
-  if (!html.includes('personal-images-v30.js')) html = html.replace('</body>', '<script src="personal-images-v30.js?v=31"></script></body>');
+  if (!html.includes('ui-landmark.css')) html = html.replace('</head>', '<link rel="stylesheet" href="ui-landmark.css?v=32"></head>');
+  if (!html.includes('ui-landmark.js')) html = html.replace('</body>', '<script src="ui-landmark.js?v=32"></script></body>');
+  if (!html.includes('trigger-fix-v16.js')) html = html.replace('</body>', '<script src="trigger-fix-v16.js?v=32"></script></body>');
+  if (!html.includes('guide-integrated-v24.js')) html = html.replace('</body>', '<script src="guide-integrated-v24.js?v=32"></script></body>');
+  if (!html.includes('region-layout-v26.js')) html = html.replace('</body>', '<script src="region-layout-v26.js?v=32"></script></body>');
+  if (!html.includes('presentation-layout-v28.js')) html = html.replace('</body>', '<script src="presentation-layout-v28.js?v=32"></script></body>');
+  if (!html.includes('numbering-v29.js')) html = html.replace('</body>', '<script src="numbering-v29.js?v=32"></script></body>');
+  if (!html.includes('personal-images-v30.js')) html = html.replace('</body>', '<script src="personal-images-v30.js?v=32"></script></body>');
 
-  /* Ask the browser to check sw.js against the network rather than an HTTP
-     cache. Existing controlled pages also reload when a newer controller takes
-     over, providing a second layer of protection against stale UI. */
   if (!html.includes('data-msk-sw-updater')) html = html.replace('</body>', `<script data-msk-sw-updater>
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(reg => {
