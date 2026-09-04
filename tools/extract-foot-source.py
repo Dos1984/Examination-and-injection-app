@@ -8,13 +8,16 @@ needles = [
     'Landmark-guided and image-guided approaches',
     'Plantar fascia origin',
     'Morton neuroma / intermetatarsal bursa',
+    'function figures',
+    'function renderSection',
+    'function renderRegion',
 ]
 positions = [(n, s.find(n)) for n in needles]
 found = [(n, i) for n, i in positions if i >= 0]
 if not found:
     raise SystemExit('Could not find Foot & Ankle source markers in index.html')
-lo = max(0, min(i for _, i in found) - 18000)
-hi = min(len(s), max(i for _, i in found) + 30000)
+lo = max(0, min(i for n, i in found if 'Tibiotalar' in n or 'Landmark-guided' in n) - 18000)
+hi = len(s)
 out = ['INDEX LENGTH: %d' % len(s), 'MARKERS:']
 out += [f'{n}: {i}' for n, i in positions]
 out += ['', '--- SOURCE EXCERPT ---', s[lo:hi]]
