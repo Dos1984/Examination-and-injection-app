@@ -251,6 +251,8 @@
     if (!isInjectionTab()) return;
     const view = document.querySelector('#view');
     if (!view) return;
+    /* Foot & Ankle 4.1–4.9 are now rendered as real source cards in index.html. */
+    if (view.querySelector('.foot-source-card[data-source-foot-card="1"]')) return;
 
     const candidateSections = [...view.querySelectorAll('.section')];
     let section = null;
