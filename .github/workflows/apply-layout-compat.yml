@@ -1,0 +1,32 @@
+name: Apply layout compatibility patches
+
+on:
+  push:
+    paths:
+      - 'tools/apply-layout-compat.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Patch layout helpers
+        run: python tools/apply-layout-compat.py
+      - name: Commit compatibility changes
+        run: |
+          if git diff --quiet -- guide-integrated-v24.js presentation-layout-v28.js sw.js; then
+            echo "No compatibility changes required"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add guide-integrated-v24.js presentation-layout-v28.js sw.js
+          git commit -m "Align guide integration and image layout with source rebuild"
+          git push
