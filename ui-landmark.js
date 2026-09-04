@@ -4,6 +4,16 @@
   const isHandInjection = () => location.hash.split('/')[1] === 'hand' && isInjectionTab();
   let settingsDraft = null;
 
+  function loadGuideV24() {
+    if (document.querySelector('script[data-guide-v24-loader]')) return;
+    const s = document.createElement('script');
+    s.dataset.guideV24Loader = '1';
+    s.src = new URL('guide-integrated-v24.js?v=24', document.baseURI).href;
+    s.async = false;
+    document.head.appendChild(s);
+  }
+  loadGuideV24();
+
   function forceIllustrationOnly() {
     let changed = false;
     try {
@@ -54,6 +64,9 @@
 
     forceIllustrationOnly();
     body.querySelectorAll('[data-figure="silhouette"]').forEach(el => el.remove());
+
+    const hint = body.querySelector('.sethint');
+    if (hint && /Both diagrams/i.test(hint.textContent || '')) hint.textContent = 'The illustration is fully clickable — select a body part or its label.';
 
     if (body.dataset.confirmSettings === '1' && body.querySelector('#applyNewSettings')) {
       if (settingsDraft) paintDraftSelection(body);
@@ -195,6 +208,7 @@
   }
 
   function enhance() {
+    loadGuideV24();
     forceIllustrationOnly();
     enhanceSettings();
     if (!isInjectionTab()) return;
