@@ -128,10 +128,10 @@
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'inj-collapse-toggle';
-      btn.setAttribute('aria-expanded', i === 0 ? 'true' : 'false');
+      btn.setAttribute('aria-expanded', 'false');
       btn.innerHTML = `<span>${h2.innerHTML}</span><span class="inj-chevron" aria-hidden="true">⌄</span>`;
       h2.replaceWith(btn);
-      if (i !== 0) section.classList.add('collapsed');
+      section.classList.add('collapsed');
       btn.onclick = () => {
         const closed = section.classList.toggle('collapsed');
         btn.setAttribute('aria-expanded', String(!closed));
