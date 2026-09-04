@@ -1,4 +1,4 @@
-/* v32 — single source of truth for page numbering and final dropdown normalisation. */
+/* v33 — single source of truth for page numbering and final dropdown normalisation. */
 (() => {
   const tab=()=>location.hash.split('/')[2]||'';
   const route=()=>location.hash.split('/')[1]||'';
@@ -9,7 +9,7 @@
   const setText=(el,t)=>{if(el&&el.textContent!==t)el.textContent=t;};
 
   function makeProcedureCard(title,nodes,id){
-    const c=document.createElement('section');c.className='hand-inj-sub region-inj-sub collapsed';c.dataset.regionProcedure='v32';if(id)c.id=id;
+    const c=document.createElement('section');c.className='hand-inj-sub region-inj-sub collapsed';c.dataset.regionProcedure='v33';if(id)c.id=id;
     const b=document.createElement('div');b.className='hand-inj-sub-body';nodes.forEach(n=>b.appendChild(n));
     const tog=document.createElement('button');tog.type='button';tog.className='hand-inj-sub-toggle';tog.setAttribute('aria-expanded','false');
     const tx=document.createElement('span');tx.className='hand-inj-sub-text';const lab=document.createElement('span');lab.className='hand-inj-sub-title';lab.textContent=strip(title);const hint=document.createElement('span');hint.className='hand-inj-sub-hint';hint.textContent='Tap to view landmarks, approach & safety';tx.append(lab,hint);
